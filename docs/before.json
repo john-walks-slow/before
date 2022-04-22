@@ -1,16 +1,16 @@
 {
   "parameters": {
     "text_panel": {
-      "size": ["95%", "25%"],
+      "size": ["95%", "30%"],
       "color": "rgba(238,235,239,0.88)",
       "color_text": "#000",
       "indent_text": "16px",
       "indent_bottom": "32px",
-      "size_text": "28px",
+      "size_text": "1.3em",
       "dialog_speed": "35",
       "art": { "zh-Hant": "" },
       "className": "text_panel",
-      "position": ["2.5%", "2.5%"],
+      "position": ["2.5%", "2.5%", "0"],
       "font_family": "Arial",
       "style": "border-radius:10px;border: solid 5px black;"
     },
@@ -53,7 +53,7 @@
         "color": "rgba(0,0,0,0.45)",
         "color_text": "rgb(255,255,255)",
         "size_text": "20px",
-        "text": "◀",
+        "text": { "zh-Hant": "◀" },
         "art": { "zh-Hant": "" },
         "sound": { "zh-Hant": "" },
         "hotspot": ["0%", "0%"],
@@ -72,20 +72,12 @@
     "sounds": { "click": "avg/audio/click" }
   },
   "blocks": {
-    "hidden": ["264.479px", "248.588px", "block", false],
-    "intro": ["433.513px", "404.838px", "block", false],
-    "outro": ["1027.14px", "354.525px", "block", false],
-    "interlude": ["725.638px", "354.65px", "block", false]
+    "hidden": ["124.458px", "355.229px", "block", false],
+    "intro": ["428.179px", "355.504px", "block", false],
+    "outro": ["1027.95px", "356.125px", "block", false],
+    "interlude": ["728.275px", "354.6px", "block", false]
   },
-  "hidden": [
-    {
-      "dialogs": [
-        {
-          "controll": "hidden_here"
-        }
-      ]
-    }
-  ],
+  "hidden": [{ "dialogs": [{ "controll": "hidden_here" }] }],
   "intro": [
     {
       "dialogs": [
@@ -94,29 +86,19 @@
           "timer": [500, "tue_go"],
           "js": "tuesday.classList.add('white');"
         },
-        {
-          "text": "歡迎來到這次旅程！"
-        },
+        { "text": "歡迎來到這次旅程！" },
         {
           "text": "在開始前，我們想提醒你：本次旅程的主題與“生死”有關，可能包含令人不安的内容，觸發負面情緒。"
         },
-        {
-          "text": "請在確保情緒穩定的情況下游玩、體驗！"
-        },
-        {
-          "text": "如果感到不適，你可以隨時離開，回到現實。"
-        },
+        { "text": "請在確保情緒穩定的情況下游玩、體驗！" },
+        { "text": "如果感到不適，你可以隨時離開，回到現實。" },
         { "text": "……" },
         { "text": "…………" },
         { "text": "………………" },
         { "text": "那麽，我們要出發了。" },
         { "text": "這是“她”的故事，" },
         { "text": "也是“你”的故事。" },
-        {
-          "controll": "hidden_here",
-          "timer": [2500, "tue_go"],
-          "js": ""
-        }
+        { "controll": "hidden_here", "timer": [2500, "tue_go"], "js": "" }
       ],
       "background_image": "avg/image/black.jpg"
     },
@@ -131,9 +113,7 @@
           "text": "小學二年級時，你的爸爸和其他家人在內地，媽媽帶著你和妹妹在香港住。",
           "js": "tuesday.tilt('100%','0%');"
         },
-        {
-          "text": "媽媽要上班還要照顧你們，很忙。"
-        },
+        { "text": "媽媽要上班還要照顧你們，很忙。" },
         { "text": "她對你的學習抓得特別緊，但幾乎沒有和你聊過天。" },
         {
           "text": "難過的時候、失落的時候、恐懼的時候，你只能躲起來試圖自己解決。"
@@ -200,9 +180,7 @@
           "text": "今天，你和舍友說去買點東西，一個人走上大樓的天台。",
           "js": "tuesday.tilt('65%','0%')"
         },
-        {
-          "text": "你翻過天台的圍欄，坐在圍欄上。天空是淡淡的灰藍色。"
-        },
+        { "text": "你翻過天台的圍欄，坐在圍欄上。天空是淡淡的灰藍色。" },
         {
           "text": "向下望，城市還是這麼嘈雜。汽車喇叭聲、狗吠聲、人群的聲音混成一團。"
         },
@@ -293,12 +271,6 @@
       "background_music": "avg/audio/School_days"
     }
   ],
-  "outro": [
-    {
-      "dialogs": [{ "text": "……" }, {}],
-      "background_music": "avg/audio/Way_to_home"
-    }
-  ],
   "interlude": [
     {
       "dialogs": [
@@ -311,9 +283,7 @@
         { "text": "一片黑色？這有點不真實。" },
         { "text": "上一個瞬間，你明明還在屋頂呀，漫畫風格的屋頂。" },
         { "text": "你想起來了。你是滑下去了、然後就墜落了。" },
-        {
-          "text": "你的腦袋昏昏沈沈的，好像做了一整天的夢。"
-        }
+        { "text": "你的腦袋昏昏沈沈的，好像做了一整天的夢。" }
       ],
       "background_music": "avg/audio/Fragile",
       "background_color": "rgb(0,0,0)",
@@ -326,14 +296,11 @@
           "timer": [4000, "tue_go"],
           "js": "tuesday.fade();"
         },
-        {
-          "text": "當你睜開眼的時候，你發現自己在一片星空裏。"
-        },
+        { "text": "當你睜開眼的時候，你發現自己在一片星空裏。" },
         { "text": "只能這麽形容了……你在一片星空裏。" },
         { "text": "這是一片你沒見過的星空，掛著一些白色的星星。" },
-        {
-          "text": "要是你的頻率與它們重疊，就能聽見它們的聲音。"
-        },
+        { "text": "要是你的頻率與它們重疊，" },
+        { "text": "就能聽見它們的聲音。" },
         {
           "controll": "hidden_here",
           "event": "interlude_end"
@@ -343,6 +310,155 @@
       "background_music": "avg/audio/Fragile",
       "background_color": "rgb(0,0,0)",
       "background_image": "avg/image/stars.jpg"
+    }
+  ],
+  "outro": [
+    {
+      "dialogs": [
+        { "text": "嘿！", "js": "tuesday.classList.remove('white');" },
+        { "text": "Hello！" },
+        { "text": "聽得見嗎？" }
+      ],
+      "background_color": "rgb(255,255,255)"
+    },
+    {
+      "dialogs": [
+        { "text": "該起床了！已經是個夏天了。" },
+        { "text": "你有仔細地聽他們說話嗎？" },
+        { "text": "他們的痛苦，他們的語言，他們的心，" },
+        { "text": "都是無法被死亡粗暴地搶走的。" },
+        { "text": "而這比起你的生命根本不算什麽。" },
+        { "text": "你的生命正在展開，它還是嶄新的。" }
+      ],
+      "background_music": "avg/audio/Way_to_home",
+      "background_image": "avg/image/summer1.jpg"
+    },
+    {
+      "background_music": "avg/audio/Way_to_home",
+      "dialogs": [
+        {
+          "text": "故事到這就結束了。你要回到現實了。",
+          "art": [
+            {
+              "position": ["30%", "0", "10%", "0"],
+              "size": ["80%", "80%"],
+              "url": "avg/image/Avatar_End_Animation.gif",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"]
+            }
+          ]
+        },
+        {
+          "text": "走之前，跟著我做：",
+          "art": [
+            {
+              "position": ["30%", "0", "10%", "0"],
+              "size": ["80%", "80%"],
+              "url": "avg/image/Avatar_End_Animation.gif",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"]
+            }
+          ]
+        },
+        {
+          "text": "把手掌貼在左胸口，使點勁！",
+          "art": [
+            {
+              "position": ["-20%", "0", "-40%", "0"],
+              "size": ["200%", "200%"],
+              "url": "avg/image/Avatar_Line_White.png",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "15",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "text": "感受到嗎？",
+          "art": [
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["200%", "200%"],
+              "url": "avg/image/Avatar_Line_White.png",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "5",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "text": "你還有好多的勇氣和決心藏在你的心跳裏呢！",
+          "art": [
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": "avg/image/Avatar_Line_White.png",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "5",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "text": "在落地之前，",
+          "art": [
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": "avg/image/Avatar_Line_White.png",
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "5",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "text": "你是自由的。",
+          "art": [
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": { "zh-Hant": "avg/image/Avatar_Line_White.png" },
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "5",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "text": "(The end)",
+          "art": [
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": { "zh-Hant": "avg/image/Avatar_Line_White.png" },
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "5",
+              "className": "Avatar_Line"
+            }
+          ]
+        },
+        {
+          "controll": "hidden_here",
+          "timer": [1000, "tue_go"]
+        },
+        {
+          "controll": "hidden_here",
+          "event": "outro_end"
+        }
+      ]
     }
   ]
 }

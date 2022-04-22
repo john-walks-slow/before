@@ -624,6 +624,9 @@ function creation_scene() {
     tuesday.dispatchEvent(new Event(Object.keys(arr_dialog)[0]));
   }
 }
+function auto_advance() {
+
+}
 function creation_dialog() {
   arr_dialog = story_json[tue_story][scene].dialogs[dialog];
   if (

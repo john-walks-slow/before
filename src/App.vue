@@ -1,10 +1,12 @@
 <template>
   <div class="max">
+    <LoadingScene />
     <DescriptionScene
       :show="scene == 'Description'"
       v-on:proceedStory="proceedStory"
     />
-    <AVGScene :show="scene == 'story'" />
+    <AVGScene :show="scene == 'Story'" />
+    <EndScene :show="scene == 'End'" />
     <BuildingScene
       :show="scene == 'Building'"
       v-on:proceedStory="proceedStory"
@@ -16,6 +18,8 @@
 <script>
 const STORY_LIST = ["intro", "interlude", "outro"];
 import AVGScene from "./components/AVGScene.vue";
+import LoadingScene from "./components/LoadingScene.vue";
+import EndScene from "./components/EndScene.vue";
 import BuildingScene from "./components/BuildingScene.vue";
 import DescriptionScene from "./components/DescriptionScene.vue";
 import StarScene from "./components/StarScene.vue";
@@ -23,6 +27,8 @@ export default {
   name: "App",
   components: {
     AVGScene,
+    LoadingScene,
+    EndScene,
     BuildingScene,
     DescriptionScene,
     StarScene,
@@ -37,18 +43,13 @@ export default {
   methods: {
     proceedStory: function () {
       this.story++;
-      this.scene = "story";
+      this.scene = "Story";
       /*global go_to*/
 
       go_to(STORY_LIST[this.story]);
     },
   },
   mounted: function () {
-    window.onload = () => {
-      /*global load_story*/
-
-      load_story("file", "before.json");
-    };
     /* global tuesday */
     tuesday.tilt = (start = "center", end = "100%", duration = 60000) => {
       tuesday.style.backgroundPositionY = `${start}`;
@@ -65,6 +66,9 @@ export default {
     });
     tuesday.addEventListener("interlude_end", () => {
       this.scene = "Star";
+    });
+    tuesday.addEventListener("outro_end", () => {
+      this.scene = "End";
     });
   },
 };
@@ -85,6 +89,7 @@ html {
   overflow: auto;
   overflow-x: hidden;
   background: black;
+  font-size: calc(min(4vw, 25px));
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -113,16 +118,17 @@ html {
   z-index: 2001 !important;
 }
 #tuesday.white #tue_next {
+  border-radius: 0px;
   background-color: #00000090 !important;
 }
 #tuesday.white #tue_text_block {
   background: transparent !important;
-  bottom: 40% !important;
-  left: 11% !important;
-  right: initial !important;
+  bottom: 35% !important;
   width: 88% !important;
+  max-width: 26em !important;
   border: none !important;
 }
+
 #tuesday.white #tue_text_view {
   color: white !important;
 }

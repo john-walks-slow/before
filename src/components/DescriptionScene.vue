@@ -82,7 +82,7 @@ export default {
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
 }
 #ContinueButton.moved {
-  bottom: 150px;
+  bottom: 100px;
 }
 #AvatarLine {
   position: fixed;
@@ -103,15 +103,17 @@ export default {
   overflow-y: auto;
   position: absolute;
   top: 45%;
-  transform: translate(0, -50%);
   height: 20em;
   max-height: 85vh;
   width: 100%;
   padding: 0 50px;
   text-align: center;
-  line-height: 2;
-  font-size: 1.1em;
+  line-height: 1.8;
+  font-size: 1em;
   z-index: 2;
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
+  top: 70px;
+  /* transform: translate(0, -50%); */
+  height: calc(100vh - 288px);
 }
 </style>
