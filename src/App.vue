@@ -37,6 +37,7 @@ export default {
     return {
       // scene: "Building",
       scene: "Description",
+      // scene: "End",
       story: -1,
     };
   },
@@ -75,6 +76,12 @@ export default {
 </script>
 
 <style lang="scss">
+div iframe {
+  min-height: 100% !important;
+}
+iframe footer {
+  visibility: hidden !important;
+}
 body {
   color: black;
 
