@@ -58,6 +58,7 @@ export default {
             (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
           if (this.scrollProgress > 0.99) {
             this.$emit("proceedStory");
+            clearInterval();
           }
         }, 100);
       } else {

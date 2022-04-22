@@ -25,22 +25,24 @@ window.onmousedown = window.onselectstart = function () {
   return false;
 };
 document.addEventListener("keydown", function (event) {
-  var k = event.code;
-  if (k == story_json.parameters.key.next && controll) {
-    go_story();
-  } else if (k == story_json.parameters.key.back && controll) {
-    back_story();
-  } else if (k == story_json.parameters.key.main) {
-    var g = story_json.parameters.launch_story;
-    go_to(g);
-  } else if (k == story_json.parameters.key.save) {
-    save_stag("bookmark");
-  } else if (k == story_json.parameters.key.load) {
-    load_stag("bookmark");
-  } else if (k == story_json.parameters.key.autosave) {
-    load_stag("auto");
-  } else if (k == story_json.parameters.key.full_screen) {
-    full_screen();
+  if (story_json.parameters) {
+    var k = event.code;
+    if (k == story_json.parameters.key.next && controll) {
+      go_story();
+    } else if (k == story_json.parameters.key.back && controll) {
+      back_story();
+    } else if (k == story_json.parameters.key.main) {
+      var g = story_json.parameters.launch_story;
+      go_to(g);
+    } else if (k == story_json.parameters.key.save) {
+      save_stag("bookmark");
+    } else if (k == story_json.parameters.key.load) {
+      load_stag("bookmark");
+    } else if (k == story_json.parameters.key.autosave) {
+      load_stag("auto");
+    } else if (k == story_json.parameters.key.full_screen) {
+      full_screen();
+    }
   }
 });
 function get_lang() {

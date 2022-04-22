@@ -25,7 +25,7 @@ export default {
 #BG {
   background: black;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - calc(100vh - 100%));
 }
 #RestartButton {
   font-size: 2em;

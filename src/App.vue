@@ -82,7 +82,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - calc(100vh - 100%));
   margin: 0;
 }
 html {
@@ -110,7 +110,7 @@ html {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - calc(100vh - 100%));
   z-index: 99;
 }
 #tue_text_block {
@@ -134,7 +134,7 @@ html {
 }
 // #tuesday.white #tue_next {
 //   width: 100vw !important;
-//   height: 100vh !important;
+//   height: calc(100vh - calc(100vh - 100%)) !important;
 //   left: 0 !important;
 //   bottom: 0 !important;
 // }

@@ -21,7 +21,7 @@ export default {
 #BG {
   background: url("/src/assets/stars.jpg");
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - calc(100vh - 100%));
   background-size: cover;
 }
 </style>
