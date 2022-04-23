@@ -1,15 +1,16 @@
 <template>
   <div class="max" :class="{ hide: !show }">
     <div id="Description" :class="{ fade: isDescriptionShow != true }">
-      <b>簡介：</b>
+      <b>內容介紹：</b>
       <p>
-        死亡是什麽樣的？沒人見過。沒人知道。但是，讀著這行字的你正活著。<br />
-        有時我聽見你說：太痛苦了，一切都不會好起來！<br />
+        总有一天，我们会离开这个世界。<br />
+        當你說：“活着太痛苦了，再也不會好起來了”<br />
         我多想告訴你，你因為活著而擁有的魄力就在你的身體裏。<br />
-        把這場展覽當作一次旅行。請你看一看，那些與死亡近距離接觸過的人，<br />
-        他們的窗門裏面藏著的秘密。請你聽聽那些見證過死亡、<br />
+        在这场展覽中，你会看到與死亡近距離接觸過的人，<br />
+        他們的窗户裏藏著的故事。你會聽見見證過死亡、<br />
         經歷過痛苦、與死神擦肩過的人，他們想說的話。<br />
-        落地之前，你會發現什麽？
+        落地之前，你會發現什麽？<br />
+        （體驗需時約30分鐘。建議佩戴耳機。）
       </p>
     </div>
     <div id="BG" class="max flex">
@@ -51,6 +52,23 @@ export default {
         this.isDescriptionShow = true;
         this.continueText = "開始";
       } else {
+        var body = document.body; // Make the body go full screen.
+        var requestMethod =
+          body.requestFullScreen ||
+          body.webkitRequestFullScreen ||
+          body.mozRequestFullScreen ||
+          body.msRequestFullScreen;
+        if (requestMethod) {
+          // Native full screen.
+          requestMethod.call(body);
+        } else if (typeof window.ActiveXObject !== "undefined") {
+          // Older IE.
+          // eslint-disable-next-line no-undef
+          var wscript = new ActiveXObject("WScript.Shell");
+          if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+          }
+        }
         this.$emit("proceedStory");
       }
     },
@@ -73,7 +91,7 @@ export default {
 }
 #ContinueButton {
   position: absolute;
-  bottom: 200px;
+  bottom: 140px;
   width: 100px;
   left: 0;
   right: 0;

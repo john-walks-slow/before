@@ -1,15 +1,23 @@
 <template>
   <div id="Sky" :class="{ hide: !show }">
     <!-- <button id="ContinueButton">繼續 ......</button> -->
+    <p id="Message1">落地之前，點擊窗戶，聽聽他們的故事 ……</p>
+    <p class="message-text" id="Message2">死亡是無法避免的…</p>
+    <p class="message-text" id="Message3">我害怕死亡。</p>
+    <p class="message-text" id="Message4">我愛的人，他們会离开我。</p>
+    <p class="message-text" id="Message5">我想念他们。</p>
+    <p class="message-text" id="Message6">活著有时很痛苦，</p>
+    <p class="message-text" id="Message7">會有快樂的事情嗎？</p>
+    <p class="message-text" id="Message8">我真正想要的<br /><br />是 ……</p>
     <img
       id="Avatar"
       :src="require('/src/assets/Avatar_Fall_Animation.gif')"
       :style="{ filter: `saturate(${scrollProgress * 0.7})` }"
     />
     <div id="clouds">
-      <img id="Cloud1" :src="require('/src/assets/cloud.png')" />
-      <img id="Cloud2" :src="require('/src/assets/cloud.png')" />
-      <img id="Cloud3" :src="require('/src/assets/cloud.png')" />
+      <img class="cloud" id="Cloud1" :src="require('/src/assets/cloud.png')" />
+      <img class="cloud" id="Cloud2" :src="require('/src/assets/cloud.png')" />
+      <img class="cloud" id="Cloud3" :src="require('/src/assets/cloud.png')" />
     </div>
     <div>
       <img id="Building" :src="require('/src/assets/building.png')" />
@@ -25,15 +33,57 @@
         <div
           v-for="index in 20"
           :key="index"
-          class="window_trigger"
+          hover="true"
+          v-tooltip="{
+            text:
+              '“' +
+              firsthand.find((f) => f.id == `firsthand${index}`)?.title +
+              '”',
+          }"
+          class="window_trigger data-v-tooltip arrow"
+          @click="openWindow(index)"
           :id="`WindowTrigger${index}`"
         ></div>
+      </div>
+    </div>
+    <div
+      id="ContentBox"
+      class="flex"
+      :class="{ 'content-fade': window == false }"
+    >
+      <span id="BackButton" @click="closeWindow()">‹</span>
+      <span id="PictureButton" @click="togglePicture()">👁</span>
+      <img
+        id="ContentBG"
+        :class="{ 'view-picture': picture, 'no-transition': noTransition }"
+        :src="window ? `/img/firsthand${window}.png` : ``"
+        alt=""
+      />
+      <div id="TitleBox" class="a-center" :class="{ 'show-title': title }">
+        {{ firsthand.find((f) => f.id == `firsthand${window}`)?.quote }}
+      </div>
+      <div id="TextBox" class="a-center">
+        <h1>
+          {{
+            firsthand
+              .find((f) => f.id == `firsthand${window}`)
+              ?.text.split("\n")[0]
+          }}
+        </h1>
+        {{
+          firsthand
+            .find((f) => f.id == `firsthand${window}`)
+            ?.text.split("\n")
+            .slice(1)
+            .join("\n\n")
+        }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import firsthand from "../data/firsthand.json";
 export default {
   name: "BuildingScene",
   props: {
@@ -42,15 +92,50 @@ export default {
   data() {
     return {
       scrollProgress: 0,
+      window: false,
+      firsthand,
+      picture: true,
+      title: true,
+      noTransition: false,
     };
   },
-  mounted() {},
+  components: {},
+  mounted() {
+    console.log(this.firsthand);
+  },
+  methods: {
+    openWindow(id) {
+      this.window = id;
+      this.title = true;
+      setTimeout(() => {
+        this.picture = false;
+      }, 2000);
+      setTimeout(() => {
+        this.title = false;
+      }, 3000);
+      // document.body.classList.add("no-scroll");
+    },
+    closeWindow() {
+      this.window = false;
+      this.picture = true;
+      this.title = true;
+      this.noTransition = true;
+      setTimeout(() => {
+        this.noTransition = false;
+      }, 1000);
+      // document.body.classList.remove("no-scroll");
+    },
+    togglePicture() {
+      this.picture = !this.picture;
+      // document.body.classList.remove("no-scroll");
+    },
+  },
   watch: {
     show(newValue) {
       if (newValue) {
         scrollTo(0, 0);
         setInterval(() => {
-          var h = document.documentElement,
+          var h = document.body,
             b = document.body,
             st = "scrollTop",
             sh = "scrollHeight";
@@ -71,21 +156,199 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+h1 {
+  font-weight: bold;
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
+  margin-left: -0.6em;
+}
+.message-text {
+  opacity: 0.7;
+  transition: all 1000ms;
+}
+@media only screen and (max-width: 700px) {
+  .message-text {
+    font-size: 0.8em !important;
+  }
+}
+#Message1 {
+  position: absolute;
+  font-weight: bold;
+  margin: 6%;
+  font-size: 1.5em;
+}
+#Message2 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 16%;
+  left: 0%;
+}
+#Message3 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 26%;
+  left: 18%;
+}
+#Message4 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 40%;
+  left: 5%;
+}
+#Message5 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 50%;
+  left: 20%;
+}
+#Message6 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 60%;
+  left: 5%;
+}
+#Message7 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.2em;
+  top: 70%;
+  left: 15%;
+}
+#Message8 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.5em;
+  top: 90%;
+  left: 5vw;
+}
+#ContentBox {
+  filter: blur(0px);
+  z-index: 999999;
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  background-size: cover !important;
+  transition: opacity 1000ms ease-in-out, transform 1000ms, filter 1000ms;
+  pointer-events: auto;
+}
+#ContentBox.content-fade {
+  filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transform: rotate(5deg) scale(0.1) !important;
+  transition: opacity 500ms ease-in-out, transform 500ms, filter 200ms;
+}
+#ContentBG {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 3;
+  opacity: 0.15;
+  pointer-events: none;
+  transition: all 4000ms;
+  filter: brightness(4) contrast(0.7) blur(3px);
+}
+
+#ContentBG.view-picture {
+  opacity: 1;
+  transition: all 1000ms;
+  filter: brightness(1) contrast(1) blur(0px);
+}
+#BackButton {
+  position: fixed;
+  left: 30px;
+  top: calc(10px - 0.3em);
+  font-size: 1.5em;
+  z-index: 999999;
+  cursor: pointer;
+}
+#PictureButton {
+  position: fixed;
+  right: 30px;
+  top: 10px;
+  font-size: 1em;
+  z-index: 999999;
+  cursor: pointer;
+}
+#TextBox {
+  position: fixed;
+  white-space: pre-line;
+  // text-indent: 2em;
+  // font-family: cursive;
+  padding: 15vw;
+  background-size: 100% 100% !important;
+  // background: url("../assets/paper.png");
+  color: black;
+  background-color: white;
+  overflow: auto;
+  height: 100%;
+  line-height: 2;
+  font-size: 0.8em;
+  overflow: auto;
+}
+#TitleBox {
+  white-space: pre-line;
+  // text-indent: 2em;
+  // font-family: cursive;
+  padding: 0px 5vw;
+  width: 100%;
+  background-size: 100% 100% !important;
+  // background: url("../assets/paper.png");
+  color: white;
+  background-color: black;
+  overflow: auto;
+  line-height: 2;
+  font-size: 2em;
+  z-index: 9;
+  overflow: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1500ms;
+}
+#TitleBox.show-title {
+  opacity: 1;
+}
 #Sky {
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
   // background: linear-gradient(180deg, rgba(186, 195, 232, 0) 0%, #bac3e8 100%);
-  background: #bac3e8;
+  // background: linear-gradient(
+  //   180deg,
+  //   rgb(255, 255, 255) 0%,
+  //   #bac3e8 96%,
+  //   black 98%
+  // );
   background: linear-gradient(
-    180deg,
-    rgb(255, 255, 255) 0%,
-    #bac3e8 98%,
-    #7c7f8a 99%,
-    black
+    white 0%,
+
+    rgb(127, 152, 252) 45%,
+    hsl(260, 100%, 71%) 65%,
+    red 98%,
+    black 99%
   );
-  border-bottom: solid black calc(calc(100vh - 100px) - 17vw);
+  border-bottom: solid black calc(calc(100vh - 200px) - 22vw);
 }
 #Building {
   width: 50%;
@@ -110,7 +373,7 @@ export default {
 #Avatar {
   position: fixed;
   left: 8vw;
-  top: 100px;
+  top: 200px;
   width: 35vw;
 }
 .window {
@@ -144,6 +407,9 @@ export default {
   top: 0;
   left: 0;
 }
+.cloud {
+  pointer-event: none;
+}
 #Cloud1 {
   position: relative;
   right: 20%;
@@ -166,4 +432,62 @@ export default {
   width: 180%;
   opacity: 0.5;
 }
+@-webkit-keyframes swing {
+  15% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  30% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  50% {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  65% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  80% {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes swing {
+  15% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+  }
+  30% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+  }
+  50% {
+    -webkit-transform: translateX(3px);
+    transform: translateX(3px);
+  }
+  65% {
+    -webkit-transform: translateX(-3px);
+    transform: translateX(-3px);
+  }
+  80% {
+    -webkit-transform: translateX(2px);
+    transform: translateX(2px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+// .window:hover {
+//   -webkit-animation: swing 1s ease;
+//   animation: swing 1s ease;
+//   -webkit-animation-iteration-count: 1;
+//   animation-iteration-count: 1;
+// }
 </style>

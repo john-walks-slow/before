@@ -1,10 +1,12 @@
 <template>
-  <div id="BG" :class="{ hide: !show }" class="v-flex">
+  <div id="BG" class="v-flex">
     <div id="Container">
-      歡迎回到現實！<br />
-      這個故事結束了，你的生活還會繼續。<br />
-      一起加油吧！<br />
-      歡迎在下方留言，講講你對生、死的體會。<br />
+      這個故事結束了，你的生活還在繼續。<br />
+      衷心地祝願，我們都能在矛盾中走出自己的人生，<br />
+      強烈而独特地活著。<br />
+      你可以在下方留言，講講你對生、死的體會。<br />
+      <a href="/building">回到大樓</a>
+      <a href="/star">回到星空</a>
       <a href="/">重新開始</a>
     </div>
     <!-- <button id="RestartButton" @click="refresh()">重新开始</button> -->
@@ -53,8 +55,10 @@ export default {
   height: calc(100vh - calc(100vh - 100%));
 }
 #Container {
-  padding: 30px;
+  padding-top: 30px;
+  margin: auto;
   font-size: 0.9em;
+  text-align: center;
 }
 #disqus_thread {
   background: white;
@@ -63,8 +67,8 @@ export default {
   box-shadow: #eee 0px 0px 10px 4px;
   bottom: 10px;
   width: 96vw;
-  height: 70vh;
-  margin: auto auto 10px auto;
+  height: 60vh;
+  margin: auto auto 2vw auto;
   align-self: center;
 }
 
@@ -73,5 +77,8 @@ export default {
 }
 #CommentButton {
   font-size: 2em;
+}
+a {
+  margin-right: 15px;
 }
 </style>
