@@ -40,7 +40,7 @@ export default {
       scene: "Description",
       // scene: "Star",
       // scene: "End",
-      story: 2,
+      story: 0,
     };
   },
   methods: {
