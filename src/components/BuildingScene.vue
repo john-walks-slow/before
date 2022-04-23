@@ -4,9 +4,9 @@
     <p id="Message1">落地之前，點擊窗戶，聽聽他們的故事 ……</p>
     <p class="message-text" id="Message2">死亡是無法避免的…</p>
     <p class="message-text" id="Message3">我害怕死亡。</p>
-    <p class="message-text" id="Message4">我愛的人，他們会离开我。</p>
-    <p class="message-text" id="Message5">我想念他们。</p>
-    <p class="message-text" id="Message6">活著有时很痛苦，</p>
+    <p class="message-text" id="Message4">我愛的人，他們會離開我。</p>
+    <p class="message-text" id="Message5">我想念他們。</p>
+    <p class="message-text" id="Message6">活著有時很痛苦，</p>
     <p class="message-text" id="Message7">會有快樂的事情嗎？</p>
     <p class="message-text" id="Message8">我真正想要的<br /><br />是 ……</p>
     <img
