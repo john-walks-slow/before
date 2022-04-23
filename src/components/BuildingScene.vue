@@ -408,7 +408,7 @@ h1 {
   left: 0;
 }
 .cloud {
-  pointer-event: none;
+  pointer-events: none;
 }
 #Cloud1 {
   position: relative;

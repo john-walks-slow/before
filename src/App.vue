@@ -36,8 +36,8 @@ export default {
   },
   data: function () {
     return {
-      scene: "Building",
-      // scene: "Description",
+      // scene: "Building",
+      scene: "Description",
       // scene: "End",
       story: 0,
     };
@@ -185,8 +185,6 @@ body.no-scroll {
 //   bottom: 0 !important;
 // }
 
-* {
-}
 .hide {
   display: none !important;
 }
