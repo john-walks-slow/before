@@ -107,7 +107,7 @@
         {
           "controll": "hidden_here",
           "timer": [3000, "tue_go"],
-          "js": "tuesday.fade();tuesday.style.backgroundPositionY='100%';tuesday.classList.remove('white');"
+          "js": "tuesday.fade();tuesday.style.backgroundPositionX='10%';tuesday.style.backgroundPositionY='100%';tuesday.classList.remove('white');"
         },
         {
           "text": "小學二年級時，你的爸爸和其他家人在內地，媽媽帶著你和妹妹在香港住。",
@@ -326,12 +326,20 @@
         { "text": "Hello！" },
         { "text": "聽得見嗎？" }
       ],
-      "background_color": "rgb(255,255,255)"
+      "background_image": "avg/image/white.jpg"
     },
     {
       "dialogs": [
+        {
+          "controll": "hidden_here",
+          "timer": [3000, "tue_go"],
+          "js": "tuesday.fade();tuesday.style.backgroundPositionY='100%';tuesday.style.backgroundPositionX='30%';"
+        },
         { "text": "該起床了！已經是個夏天了。" },
-        { "text": "你有仔細地聽他們說話嗎？" },
+        {
+          "text": "你有仔細地聽他們說話嗎？",
+          "js": "tuesday.tilt('100%','0%');tuesday.tiltX('30%','100%')"
+        },
         { "text": "他們的痛苦，他們的語言，他們的心，" },
         { "text": "都是無法被死亡粗暴地搶走的。" },
         { "text": "而這比起你的生命根本不算什麼，" },
@@ -341,6 +349,7 @@
       "background_image": "avg/image/summer1.jpg"
     },
     {
+      "background_image": "avg/image/white.jpg",
       "background_music": "avg/audio/Way_to_home",
       "dialogs": [
         {
