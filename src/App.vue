@@ -37,7 +37,8 @@ export default {
   data: function () {
     return {
       // scene: "Building",
-      scene: "Description",
+      // scene: "Description",
+      scene: "Star",
       // scene: "End",
       story: 0,
     };

@@ -1,11 +1,15 @@
 <template>
-  <div class="BG" :class="{ hide: !show }">
-    <!-- <div class="stars"></div> -->
-    <!-- <div class="twinkling"></div> -->
-    <h1 style="color: white; font-size: 3em">施工中</h1>
-    <button style="font-size: 3em" @click="this.$emit('proceedStory')">
-      進入片尾
-    </button>
+  <div :class="{ hide: !show }">
+    <div style="position: absolute; z-index: 9">
+      <h1 style="color: white; font-size: 3em">施工中</h1>
+      <button style="font-size: 3em" @click="this.$emit('proceedStory')">
+        進入片尾
+      </button>
+    </div>
+    <div id="BG">
+      <div class="stars"></div>
+      <div class="twinkling"></div>
+    </div>
   </div>
 </template>
 
@@ -130,6 +134,7 @@ a:visited {
 .stars,
 .twinkling,
 .clouds {
+  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
