@@ -6,7 +6,7 @@
       v-on:proceedStory="proceedStory"
     />
     <AVGScene :show="scene == 'Story'" />
-    <EndScene v-show="scene == 'End'" />
+    <EndScene v-if="scene == 'End'" />
     <BuildingScene
       :show="scene == 'Building'"
       v-on:proceedStory="proceedStory"
@@ -17,6 +17,7 @@
 
 <script>
 const STORY_LIST = ["intro", "interlude", "outro"];
+// const SCENE_LIST = ["Description", "Building", "Star"];
 import AVGScene from "./components/AVGScene.vue";
 
 import LoadingScene from "./components/LoadingScene.vue";
@@ -37,9 +38,9 @@ export default {
   data: function () {
     return {
       // scene: "Building",
-      scene: "Description",
+      // scene: "Description",
       // scene: "Star",
-      // scene: "End",
+      scene: "End",
       story: 0,
     };
   },
@@ -50,6 +51,7 @@ export default {
 
       go_to(STORY_LIST[this.story]);
       this.story++;
+      // this.scene;
     },
   },
   mounted: function () {
@@ -119,19 +121,19 @@ body {
   overflow: auto;
   overflow-x: hidden;
   background: black;
-  font-size: calc(min(4vw, 25px));
+  font-size: calc(min(4vw, 3vh));
 }
 
 body.no-scroll {
   overflow: hidden;
 }
 *::-webkit-scrollbar-track {
-  border: 1px solid black;
+  border: 0.05vw solid black;
   background-color: #f5f5f5;
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 0.5vw;
   background-color: #f5f5f5;
 }
 

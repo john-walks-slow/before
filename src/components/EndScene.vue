@@ -1,5 +1,9 @@
 <template>
-  <div id="BG" class="v-flex">
+  <div
+    id="BG"
+    class="v-flex"
+    style="background: url(/avg/image/summer1.jpg); background-size: cover"
+  >
     <div id="Container">
       這個故事結束了，你的生活還在繼續。<br />
       衷心地祝願，我們都能在矛盾中走出自己的人生，<br />
@@ -20,6 +24,11 @@ export default {
   props: {
     show: Boolean,
   },
+  data() {
+    return {
+      disqusLoaded: false,
+    };
+  },
   methods: {
     refresh() {
       window.location.reload();
@@ -30,10 +39,8 @@ export default {
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
     // eslint-disable-next-line no-unused-vars
-    var disqus_config = function () {
-      this.page.url = "before-landing.vercel.app"; // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "before-landing"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
+
+    // disqus_config();
     (function () {
       // DON'T EDIT BELOW THIS LINE
       var d = document,
@@ -49,8 +56,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #BG {
-  background: url(/src/assets/summer1.jpg);
-  background-size: cover;
   width: 100vw;
   height: calc(100vh - calc(100vh - 100%));
 }
@@ -60,7 +65,17 @@ export default {
   font-size: 0.9em;
   text-align: center;
 }
+/* #disqus_thread:empty + #Loading { */
+/* display: block; */
+/* } */
+#Loading {
+  /* display: none; */
+  bottom: 55vh;
+  left: 5vw;
+  position: fixed;
+}
 #disqus_thread {
+  overflow: auto;
   background: white;
   padding: 15px 15px 0px 15px;
   border-radius: 8px;
@@ -69,7 +84,6 @@ export default {
   width: 96vw;
   height: 60vh;
   margin: auto auto 2vw auto;
-  align-self: center;
 }
 
 #RestartButton {

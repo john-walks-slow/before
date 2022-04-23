@@ -9,7 +9,7 @@
     <p class="message-text" id="Message6">活著有時很痛苦，</p>
     <p class="message-text" id="Message7">會有快樂的事情嗎？</p>
     <p class="message-text" id="Message8">我真正想要的<br /><br />是 ……</p>
-    <p class="message-text" id="Message9">繼續滑動進入下一幕</p>
+    <p class="message-text" id="Message9">滑動進入下一幕</p>
     <img
       id="Avatar"
       src="avg/image/Avatar_Fall_Animation.gif"
@@ -36,10 +36,7 @@
           :key="index"
           hover="true"
           v-tooltip="{
-            text:
-              '“' +
-              firsthand.find((f) => f.id == `firsthand${index}`)?.title +
-              '”',
+            text: firsthand.find((f) => f.id == `firsthand${index}`)?.title,
           }"
           class="window_trigger data-v-tooltip arrow"
           @click="openWindow(index)"
@@ -52,25 +49,35 @@
       class="flex"
       :class="{ 'content-fade': window == false }"
     >
-      <span id="BackButton" @click="closeWindow()" :class="{ fade: title }"
+      <span id="BackButton" @click="closeWindow()" :class="{ hide: title }"
         >‹</span
       >
-      <span id="ContentName" :class="{ fade: title }">{{
+      <span id="ContentName" :class="{ hide: title }">{{
         firsthand.find((f) => f.id == `firsthand${window}`)?.title
       }}</span>
-      <span id="PictureButton" @click="togglePicture()" :class="{ fade: title }"
+      <span id="PictureButton" @click="togglePicture()" :class="{ hide: title }"
         >👁 插圖</span
       >
       <img
-        id="ContentBG"
+        id="ContentBGContain"
         :class="{ 'view-picture': picture, 'no-transition': noTransition }"
         :src="window ? `/img/firsthand${window}.png` : ``"
         alt=""
       />
-      <div id="TitleBox" class="a-center" :class="{ 'show-title': title }">
+      <img
+        id="ContentBG"
+        :class="{ 'view-picture': title, 'no-transition': noTransition }"
+        :src="window ? `/img/firsthand${window}.png` : ``"
+        alt=""
+      />
+      <div
+        id="TitleBox"
+        class="a-center"
+        :class="{ 'show-title': title, 'no-transition': noTransition }"
+      >
         {{ firsthand.find((f) => f.id == `firsthand${window}`)?.quote }}
       </div>
-      <div id="TextBox" class="a-center">
+      <div id="TextBox" class="a-center" :class="{ fade: picture }">
         <h1>
           {{
             firsthand
@@ -102,9 +109,11 @@ export default {
       scrollProgress: 0,
       window: false,
       firsthand,
-      picture: true,
+      picture: false,
       title: false,
       noTransition: false,
+      intervalId: false,
+      timerId: false,
     };
   },
   components: {},
@@ -115,20 +124,20 @@ export default {
     openWindow(id) {
       this.window = id;
       this.title = true;
-      setTimeout(() => {
-        this.picture = false;
+      this.picture = false;
+      this.timerId = setTimeout(() => {
         this.title = false;
-      }, 4000);
+      }, 2000);
 
       // document.body.classList.add("no-scroll");
     },
     closeWindow() {
-      this.window = false;
-      this.picture = true;
-      this.title = false;
       this.noTransition = true;
-      clearTimeout();
-      setTimeout(() => {
+      this.window = false;
+      this.picture = false;
+      this.title = false;
+      this.timerId && clearTimeout(this.timerId);
+      this.timerId = setTimeout(() => {
         this.noTransition = false;
       }, 1000);
       // document.body.classList.remove("no-scroll");
@@ -142,7 +151,7 @@ export default {
     show(newValue) {
       if (newValue) {
         scrollTo(0, 0);
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
           var h = document.body,
             b = document.body,
             st = "scrollTop",
@@ -151,11 +160,11 @@ export default {
             (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
           if (this.scrollProgress > 0.99) {
             this.$emit("proceedStory");
-            clearInterval();
+            this.intervalId && clearInterval(this.intervalId);
           }
         }, 100);
       } else {
-        clearInterval();
+        this.intervalId && clearInterval(this.intervalId);
       }
     },
   },
@@ -186,6 +195,8 @@ h1 {
   position: absolute;
   font-weight: bold;
   margin: 6%;
+  opacity: 0.7;
+
   font-size: 1.5em;
 }
 #Message2 {
@@ -268,14 +279,15 @@ h1 {
   opacity: 1;
   transform: rotate(0deg) scale(1);
   background-size: cover !important;
-  transition: opacity 1000ms ease-in-out, transform 2000ms, filter 3000ms;
+  transition: opacity 700ms ease-in-out 0.1s, transform 700ms 0.1s,
+    filter 1500ms ease-out 0.1s;
   pointer-events: auto;
 }
 #ContentBox.content-fade {
   opacity: 0;
   pointer-events: none;
-  transform: rotate(5deg) scale(0.1) !important;
-  filter: blur(8px);
+  transform: rotate(0deg) scale(0.1) !important;
+  filter: blur(10px);
   transition: opacity 500ms ease-in-out, transform 500ms, filter 200ms;
 }
 #ContentBG {
@@ -286,13 +298,32 @@ h1 {
   z-index: 3;
   opacity: 0.15;
   pointer-events: none;
-  transition: all 2000ms;
+  transition: all 3000ms ease;
   filter: brightness(4) contrast(0.7) blur(3px);
 }
 
 #ContentBG.view-picture {
   opacity: 1;
   transition: all 1000ms;
+  filter: brightness(1) contrast(1) blur(0px);
+}
+#ContentBGContain {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 4;
+  opacity: 0;
+  transform: scale(1.3);
+  pointer-events: none;
+  transition: all 1200ms;
+  filter: brightness(4) contrast(0.7) blur(3px);
+}
+
+#ContentBGContain.view-picture {
+  opacity: 1;
+  transition: all 1000ms;
+  transform: scale(1);
   filter: brightness(1) contrast(1) blur(0px);
 }
 #BackButton {
@@ -302,6 +333,7 @@ h1 {
   font-size: 1.5em;
   z-index: 999999;
   cursor: pointer;
+  transition: all 1000ms;
 }
 #ContentName {
   position: fixed;
@@ -317,6 +349,7 @@ h1 {
   font-size: 0.9em;
   z-index: 999999;
   cursor: pointer;
+  transition: all 1000ms;
 }
 #TextBox {
   position: fixed;
@@ -333,6 +366,7 @@ h1 {
   line-height: 2;
   font-size: 0.8em;
   overflow: auto;
+  transition: all 1000ms 300ms;
 }
 #TitleBox {
   white-space: pre-line;
@@ -352,11 +386,12 @@ h1 {
   opacity: 0;
   pointer-events: none;
   position: relative;
-  bottom: 100px;
-  transition: opacity 1000ms, bottom 100000ms;
+  top: 15vh;
+  transition: opacity 1500ms, top 100000ms;
 }
 #TitleBox.show-title {
-  transition: all 2500ms 0.1s;
+  transition: opacity 1500ms, top 3000ms ease-in-out;
+  // top: 12vh;
   opacity: 1;
 }
 #Sky {
