@@ -9,9 +9,10 @@
     <p class="message-text" id="Message6">活著有時很痛苦，</p>
     <p class="message-text" id="Message7">會有快樂的事情嗎？</p>
     <p class="message-text" id="Message8">我真正想要的<br /><br />是 ……</p>
+    <p class="message-text" id="Message9">繼續滑動進入下一幕</p>
     <img
       id="Avatar"
-      :src="require('/src/assets/Avatar_Fall_Animation.gif')"
+      src="avg/image/Avatar_Fall_Animation.gif"
       :style="{ filter: `saturate(${scrollProgress * 0.7})` }"
     />
     <div id="clouds">
@@ -51,8 +52,15 @@
       class="flex"
       :class="{ 'content-fade': window == false }"
     >
-      <span id="BackButton" @click="closeWindow()">‹</span>
-      <span id="PictureButton" @click="togglePicture()">👁</span>
+      <span id="BackButton" @click="closeWindow()" :class="{ fade: title }"
+        >‹</span
+      >
+      <span id="ContentName" :class="{ fade: title }">{{
+        firsthand.find((f) => f.id == `firsthand${window}`)?.title
+      }}</span>
+      <span id="PictureButton" @click="togglePicture()" :class="{ fade: title }"
+        >👁 插圖</span
+      >
       <img
         id="ContentBG"
         :class="{ 'view-picture': picture, 'no-transition': noTransition }"
@@ -95,7 +103,7 @@ export default {
       window: false,
       firsthand,
       picture: true,
-      title: true,
+      title: false,
       noTransition: false,
     };
   },
@@ -109,17 +117,17 @@ export default {
       this.title = true;
       setTimeout(() => {
         this.picture = false;
-      }, 2000);
-      setTimeout(() => {
         this.title = false;
-      }, 3000);
+      }, 4000);
+
       // document.body.classList.add("no-scroll");
     },
     closeWindow() {
       this.window = false;
       this.picture = true;
-      this.title = true;
+      this.title = false;
       this.noTransition = true;
+      clearTimeout();
       setTimeout(() => {
         this.noTransition = false;
       }, 1000);
@@ -166,9 +174,12 @@ h1 {
   opacity: 0.7;
   transition: all 1000ms;
 }
-@media only screen and (max-width: 700px) {
+@media (max-width: 700px) {
   .message-text {
     font-size: 0.8em !important;
+  }
+  #Message1 {
+    font-size: 1em;
   }
 }
 #Message1 {
@@ -233,6 +244,16 @@ h1 {
   top: 90%;
   left: 5vw;
 }
+#Message9 {
+  position: absolute;
+  font-weight: bold;
+  margin: 3%;
+  font-size: 1.5em;
+  top: 100%;
+  left: 5vw;
+  opacity: 0.7;
+  color: white;
+}
 #ContentBox {
   filter: blur(0px);
   z-index: 999999;
@@ -247,14 +268,14 @@ h1 {
   opacity: 1;
   transform: rotate(0deg) scale(1);
   background-size: cover !important;
-  transition: opacity 1000ms ease-in-out, transform 1000ms, filter 1000ms;
+  transition: opacity 1000ms ease-in-out, transform 2000ms, filter 3000ms;
   pointer-events: auto;
 }
 #ContentBox.content-fade {
-  filter: blur(4px);
   opacity: 0;
   pointer-events: none;
   transform: rotate(5deg) scale(0.1) !important;
+  filter: blur(8px);
   transition: opacity 500ms ease-in-out, transform 500ms, filter 200ms;
 }
 #ContentBG {
@@ -265,7 +286,7 @@ h1 {
   z-index: 3;
   opacity: 0.15;
   pointer-events: none;
-  transition: all 4000ms;
+  transition: all 2000ms;
   filter: brightness(4) contrast(0.7) blur(3px);
 }
 
@@ -282,11 +303,18 @@ h1 {
   z-index: 999999;
   cursor: pointer;
 }
+#ContentName {
+  position: fixed;
+  left: 60px;
+  top: calc(10px + 0.2em);
+  font-size: 0.9em;
+  z-index: 999999;
+}
 #PictureButton {
   position: fixed;
   right: 30px;
-  top: 10px;
-  font-size: 1em;
+  top: calc(10px + 0.2em);
+  font-size: 0.9em;
   z-index: 999999;
   cursor: pointer;
 }
@@ -295,7 +323,7 @@ h1 {
   white-space: pre-line;
   // text-indent: 2em;
   // font-family: cursive;
-  padding: 15vw;
+  padding: 10vh 15vw;
   background-size: 100% 100% !important;
   // background: url("../assets/paper.png");
   color: black;
@@ -323,9 +351,12 @@ h1 {
   overflow: auto;
   opacity: 0;
   pointer-events: none;
-  transition: all 1500ms;
+  position: relative;
+  bottom: 100px;
+  transition: opacity 1000ms, bottom 100000ms;
 }
 #TitleBox.show-title {
+  transition: all 2500ms 0.1s;
   opacity: 1;
 }
 #Sky {

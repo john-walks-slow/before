@@ -3,14 +3,13 @@
     <div id="Description" :class="{ fade: isDescriptionShow != true }">
       <b>內容介紹：</b>
       <p>
-        总有一天，我们会离开这个世界。<br />
-        當你說：“活着太痛苦了，再也不會好起來了”<br />
-        我多想告訴你，你因為活著而擁有的魄力就在你的身體裏。<br />
-        在这场展覽中，你会看到與死亡近距離接觸過的人，<br />
-        他們的窗户裏藏著的故事。你會聽見見證過死亡、<br />
-        經歷過痛苦、與死神擦肩過的人，他們想說的話。<br />
-        落地之前，你會發現什麽？<br />
-        （體驗需時約30分鐘。建議佩戴耳機。）
+        總有一天，我們會離開這個世界。<br />
+        當你說：“活著太痛苦了，再也不會好起來。”<br />
+        我多想告訴你，你活著而擁有的魄力就在你的身體裏。<br />
+        在這場旅程中，你會遇到曾與死亡近距離接觸過的人，<br />
+        請你看看他們的故事，聽聽他們想說的話。<br />
+        落地之前，你會發現什麼？<br />
+        （體驗需時約20分鐘。建議佩戴耳機。）
       </p>
     </div>
     <div id="BG" class="max flex">
@@ -81,7 +80,7 @@ export default {
 #Title {
   width: 50%;
   max-width: 500px;
-  margin-top: 200px;
+  margin-top: 30vh;
   display: block;
   z-index: 2;
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
@@ -91,7 +90,7 @@ export default {
 }
 #ContinueButton {
   position: absolute;
-  bottom: 140px;
+  bottom: 30vh;
   width: 100px;
   left: 0;
   right: 0;
@@ -100,29 +99,27 @@ export default {
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
 }
 #ContinueButton.moved {
-  bottom: 100px;
+  bottom: 20vh;
 }
 #AvatarLine {
   position: fixed;
   opacity: 0.3;
-  left: 100px;
-  width: 330px;
+  left: 6vw;
+  height: 70vh;
   align-self: center;
 }
 #Avatar {
   position: fixed;
   opacity: 0.3;
-
-  right: 100px;
-  width: 330px;
+  transform: scale(1.08);
+  right: 6vw;
+  height: 70vh;
   align-self: center;
 }
 #Description {
   overflow-y: auto;
   position: absolute;
-  top: 45%;
-  height: 20em;
-  max-height: 85vh;
+  top: 20vh;
   width: 100%;
   padding: 0 50px;
   text-align: center;
@@ -130,8 +127,5 @@ export default {
   font-size: 1em;
   z-index: 2;
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
-  top: 70px;
-  /* transform: translate(0, -50%); */
-  height: calc(100vh - 288px);
 }
 </style>

@@ -9,9 +9,22 @@
   <link rel="stylesheet" href="bulma.min.css">
   <!-- <link rel="preload" as="audio" href="avg/audio/Crystal_Clear.mp3"> -->
   <!-- <link rel="preload" as="audio" href="avg/audio/Fated.mp3"> -->
-  <link rel="preload" as="audio" href="avg/audio/Crisscross.mp3">
-  <link rel="preload" as="audio" href="avg/audio/Fragile.mp3">
+
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="tuesday" class="fade"></div>
+  <div id="app"></div>
+
+  <!-- built files will be auto injected -->
+  <script type="text/javaScript" src="tuesday.js"></script>
   <link rel="preload" as="audio" href="avg/audio/School_days.mp3">
+  <!-- <link rel="preload" as="audio" href="avg/audio/Crisscross.mp3"> -->
+  <link rel="preload" as="audio" href="avg/audio/Fragile.mp3">
   <link rel="preload" as="audio" href="avg/audio/Way_to_home.mp3">
   <link rel="preload" as="image" href="avg/image/Avatar_Back.png">
   <link rel="preload" as="image" href="avg/image/Avatar_Line.png">
@@ -20,11 +33,6 @@
   <link rel="preload" as="image" href="avg/image/Story1C.png">
   <link rel="preload" as="image" href="avg/image/Story1D.png">
   <link rel="preload" as="image" href="avg/image/Story1E.png">
-
-
-
-
-
   <link rel="preload" as="image" href="avg/image/Avatar_Fall_Animation.gif">
   <link rel="preload" as="image" href="avg/image/summer1.jpg">
   <!-- <link rel="preload" as="image" href="avg/image/summer2.png"> -->
@@ -50,19 +58,6 @@
   <link rel="preload" as="image" href="img/firsthand14.png">
   <link rel="preload" as="image" href="img/firsthand15.png">
   <link rel="preload" as="image" href="img/firsthand18.png">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-</head>
-
-<body>
-  <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-  </noscript>
-  <div id="tuesday" class="fade"></div>
-  <div id="app"></div>
-
-  <!-- built files will be auto injected -->
-  <script type="text/javaScript" src="tuesday.js"></script>
-
 </body>
 
 </html>
