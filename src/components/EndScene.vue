@@ -9,9 +9,9 @@
       衷心地祝願，我們都能在矛盾中走出自己的人生，<br />
       強烈而独特地活著。<br />
       你可以在下方留言，講講你對生、死的體會。<br />
-      <a href="/building">回到大樓</a>
-      <a href="/star">回到星空</a>
-      <a href="/">重新開始</a>
+      <router-link to="/building">回到大樓</router-link>
+      <router-link to="/star">回到星空</router-link>
+      <router-link to="/">重新開始</router-link>
     </div>
     <!-- <button id="RestartButton" @click="refresh()">重新开始</button> -->
     <div id="disqus_thread"></div>
@@ -21,9 +21,7 @@
 <script>
 export default {
   name: "EndScene",
-  props: {
-    show: Boolean,
-  },
+  props: {},
   data() {
     return {
       disqusLoaded: false,
@@ -75,6 +73,7 @@ export default {
   position: fixed;
 }
 #disqus_thread {
+  display: flex;
   overflow: auto;
   background: white;
   padding: 15px 15px 0px 15px;

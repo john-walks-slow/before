@@ -1,5 +1,5 @@
 <template>
-  <div class="max" :class="{ hide: !show }">
+  <div class="max">
     <div id="Description" :class="{ fade: isDescriptionShow != true }">
       <b>內容介紹：</b>
       <p>
@@ -34,11 +34,11 @@
 </template>
 
 <script>
+import router from "../router/index.js";
+
 export default {
   name: "DescriptionScene",
-  props: {
-    show: Boolean,
-  },
+  props: {},
   data: function () {
     return {
       isDescriptionShow: false,
@@ -68,7 +68,7 @@ export default {
             wscript.SendKeys("{F11}");
           }
         }
-        this.$emit("proceedStory");
+        router.push("/story/intro");
       }
     },
   },

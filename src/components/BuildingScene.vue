@@ -1,5 +1,5 @@
 <template>
-  <div id="Sky" :class="{ hide: !show }">
+  <div id="Sky">
     <!-- <button id="ContinueButton">繼續 ......</button> -->
     <p id="Message1">落地之前，點擊窗戶，聽聽他們的故事 ……</p>
     <p class="message-text" id="Message2">死亡是無法避免的…</p>
@@ -12,7 +12,7 @@
     <p class="message-text" id="Message9">滑動進入下一幕</p>
     <img
       id="Avatar"
-      src="avg/image/Avatar_Fall_Animation.gif"
+      src="/avg/image/Avatar_Fall_Animation.gif"
       :style="{ filter: `saturate(${scrollProgress * 0.7})` }"
     />
     <div id="clouds">
@@ -98,34 +98,33 @@
 </template>
 
 <script>
+import router from "../router/index.js";
+
 import firsthand from "../data/firsthand.json";
+let intervalId, timerId;
 export default {
   name: "BuildingScene",
-  props: {
-    show: Boolean,
-  },
+  props: {},
   data() {
     return {
       scrollProgress: 0,
-      window: false,
+      window: this.$route.params.id || false,
       firsthand,
       picture: false,
       title: false,
       noTransition: false,
-      intervalId: false,
-      timerId: false,
     };
   },
   components: {},
-  mounted() {
-    console.log(this.firsthand);
+  beforeRouteUpdate(to) {
+    this.window = to.params.id;
   },
   methods: {
     openWindow(id) {
       this.window = id;
       this.title = true;
       this.picture = false;
-      this.timerId = setTimeout(() => {
+      timerId = setTimeout(() => {
         this.title = false;
       }, 2000);
 
@@ -136,8 +135,8 @@ export default {
       this.window = false;
       this.picture = false;
       this.title = false;
-      this.timerId && clearTimeout(this.timerId);
-      this.timerId = setTimeout(() => {
+      timerId && clearTimeout(timerId);
+      timerId = setTimeout(() => {
         this.noTransition = false;
       }, 1000);
       // document.body.classList.remove("no-scroll");
@@ -146,27 +145,30 @@ export default {
       this.picture = !this.picture;
       // document.body.classList.remove("no-scroll");
     },
-  },
-  watch: {
-    show(newValue) {
-      if (newValue) {
-        scrollTo(0, 0);
-        this.intervalId = setInterval(() => {
-          var h = document.body,
-            b = document.body,
-            st = "scrollTop",
-            sh = "scrollHeight";
-          this.scrollProgress =
-            (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
-          if (this.scrollProgress > 0.99) {
-            this.$emit("proceedStory");
-            this.intervalId && clearInterval(this.intervalId);
-          }
-        }, 100);
-      } else {
-        this.intervalId && clearInterval(this.intervalId);
-      }
+    enterScene() {
+      scrollTo(0, 0);
+      intervalId = setInterval(() => {
+        var h = document.body,
+          b = document.body,
+          st = "scrollTop",
+          sh = "scrollHeight";
+        this.scrollProgress =
+          (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight);
+        if (this.scrollProgress > 0.99) {
+          router.push("/story/interlude");
+          intervalId && clearInterval(intervalId);
+        }
+      }, 100);
     },
+  },
+  activated() {
+    this.enterScene();
+  },
+  mounted() {
+    this.enterScene();
+  },
+  deactivated() {
+    intervalId && clearInterval(intervalId);
   },
 };
 </script>
@@ -279,8 +281,8 @@ h1 {
   opacity: 1;
   transform: rotate(0deg) scale(1);
   background-size: cover !important;
-  transition: opacity 700ms ease-in-out 0.1s, transform 700ms 0.1s,
-    filter 1500ms ease-out 0.1s;
+  transition: opacity 800ms ease-in-out 0.1s, transform 1100ms 0.1s,
+    filter 1500ms 0.1s;
   pointer-events: auto;
 }
 #ContentBox.content-fade {
@@ -288,7 +290,7 @@ h1 {
   pointer-events: none;
   transform: rotate(0deg) scale(0.1) !important;
   filter: blur(10px);
-  transition: opacity 500ms ease-in-out, transform 500ms, filter 200ms;
+  transition: opacity 450ms ease-in-out, transform 450ms, filter 1500ms;
 }
 #ContentBG {
   position: fixed;
@@ -298,7 +300,7 @@ h1 {
   z-index: 3;
   opacity: 0.15;
   pointer-events: none;
-  transition: all 3000ms ease;
+  transition: all 2000ms ease;
   filter: brightness(4) contrast(0.7) blur(3px);
 }
 

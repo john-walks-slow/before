@@ -19,10 +19,7 @@ export default {
   },
   mounted: function () {
     window.addEventListener("load", () => {
-      /*global load_story*/
-
       this.show = false;
-      load_story("file", "before.json");
     });
   },
 };

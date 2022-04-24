@@ -1,10 +1,8 @@
 <template>
-  <div :class="{ hide: !show }">
+  <div>
     <div style="position: absolute; z-index: 9">
       <h1 style="color: white; font-size: 3em">施工中</h1>
-      <button style="font-size: 3em" @click="this.$emit('proceedStory')">
-        進入片尾
-      </button>
+      <button style="font-size: 3em" @click="goOutro">進入片尾</button>
     </div>
     <div id="BG">
       <div class="stars"></div>
@@ -14,10 +12,16 @@
 </template>
 
 <script>
+import router from "../router/index.js";
 export default {
   name: "StarScene",
   props: {
     show: Boolean,
+  },
+  methods: {
+    goOutro() {
+      router.push("/story/outro");
+    },
   },
 };
 </script>

@@ -1,92 +1,26 @@
 <template>
   <div class="max">
     <LoadingScene />
-    <DescriptionScene
-      :show="scene == 'Description'"
-      v-on:proceedStory="proceedStory"
-    />
-    <AVGScene :show="scene == 'Story'" />
-    <EndScene v-if="scene == 'End'" />
-    <BuildingScene
-      :show="scene == 'Building'"
-      v-on:proceedStory="proceedStory"
-    />
-    <StarScene :show="scene == 'Star'" v-on:proceedStory="proceedStory" />
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <keep-alive include="AVGScene">
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
   </div>
 </template>
 
 <script>
-const STORY_LIST = ["intro", "interlude", "outro"];
-// const SCENE_LIST = ["Description", "Building", "Star"];
-import AVGScene from "./components/AVGScene.vue";
-
 import LoadingScene from "./components/LoadingScene.vue";
-import EndScene from "./components/EndScene.vue";
-import BuildingScene from "./components/BuildingScene.vue";
-import DescriptionScene from "./components/DescriptionScene.vue";
-import StarScene from "./components/StarScene.vue";
+
+// const SCENE_LIST = ["Description", "Building", "Star"];
 export default {
   name: "App",
   components: {
-    AVGScene,
     LoadingScene,
-    EndScene,
-    BuildingScene,
-    DescriptionScene,
-    StarScene,
   },
-  data: function () {
-    return {
-      // scene: "Building",
-      // scene: "Description",
-      // scene: "Star",
-      scene: "End",
-      story: 0,
-    };
-  },
-  methods: {
-    proceedStory: function () {
-      this.scene = "Story";
-      /*global go_to*/
-
-      go_to(STORY_LIST[this.story]);
-      this.story++;
-      // this.scene;
-    },
-  },
-  mounted: function () {
-    /* global tuesday */
-    tuesday.tilt = (start = "center", end = "100%", duration = 60000) => {
-      tuesday.style.backgroundPositionY = `${start}`;
-      setTimeout(() => {
-        tuesday.style.transition = `background-position ${duration}ms ease 0s`;
-        tuesday.style.backgroundPositionY = `${end}`;
-      }, 1);
-    };
-    tuesday.tiltX = (start = "20%", end = "100%", duration = 60000) => {
-      tuesday.style.backgroundPositionX = `${start}`;
-      setTimeout(() => {
-        tuesday.style.transition = `background-position ${duration}ms ease 0s`;
-        tuesday.style.backgroundPositionX = `${end}`;
-      }, 1);
-    };
-    tuesday.fade = () => {
-      tuesday.style.transition = "background-image 3000ms ease-in";
-    };
-    tuesday.transition = () => {
-      tuesday.style.transition = "all 2000ms ease-in";
-    };
-
-    tuesday.addEventListener("intro_end", () => {
-      this.scene = "Building";
-    });
-    tuesday.addEventListener("interlude_end", () => {
-      this.scene = "Star";
-    });
-    tuesday.addEventListener("outro_end", () => {
-      this.scene = "End";
-    });
-  },
+  mounted: function () {},
 };
 </script>
 

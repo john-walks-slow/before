@@ -68,7 +68,7 @@
     "font_files": {},
     "variables": {},
     "characters": {},
-    "sounds": { "click": "avg/audio/click" }
+    "sounds": { "click": "/avg/audio/click" }
   },
   "blocks": {
     "hidden": ["124.458px", "355.229px", "block", false],
@@ -99,7 +99,7 @@
         { "text": "也是“你”的故事。" },
         { "controll": "hidden_here", "timer": [2500, "tue_go"], "js": "" }
       ],
-      "background_image": "avg/image/black.jpg"
+      "background_image": "/avg/image/black.jpg"
     },
     {
       "dialogs": [
@@ -118,12 +118,12 @@
           "text": "難過的時候、失落的時候、恐懼的時候，你只能躲起來試圖自己解決。"
         }
       ],
-      "background_image": "avg/image/Story1A.png",
+      "background_image": "/avg/image/Story1A.png",
       "background_align": "20%",
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     },
     {
-      "background_image": "avg/image/Story1B.png",
+      "background_image": "/avg/image/Story1B.png",
       "background_align": "20%",
 
       "dialogs": [
@@ -136,10 +136,10 @@
           "text": "終於考上了大學，但你並不開心。你讀著一個隨意選擇的專業，看不到絲毫未來的方向。"
         }
       ],
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     },
     {
-      "background_image": "avg/image/Story1C.png",
+      "background_image": "/avg/image/Story1C.png",
       "dialogs": [
         {
           "text": "一天，你在宿舍門前聽見室友們在討論你……",
@@ -158,10 +158,10 @@
         },
         { "text": "你每天都過得心驚膽戰、唯唯諾諾的。" }
       ],
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     },
     {
-      "background_image": "avg/image/Story1D.png",
+      "background_image": "/avg/image/Story1D.png",
       "background_align": "20%",
 
       "dialogs": [
@@ -175,10 +175,10 @@
         { "text": "幾天后終於聯繫到外教爺爺，卻得知了他突然去世的消息。" },
         { "text": "那一刻，你覺得彷彿有什麼東西永遠地失去了。" }
       ],
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     },
     {
-      "background_image": "avg/image/Story1E.png",
+      "background_image": "/avg/image/Story1E.png",
       "dialogs": [
         {
           "text": "今天，你和舍友說去買點東西，一個人走上大樓的天台。",
@@ -193,7 +193,7 @@
           "text": "人生中美好的事情在你腦中浮現。你回憶起中學時的好朋友、外教爺爺和藹的面孔⋯⋯"
         }
       ],
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     },
     {
       "dialogs": [
@@ -203,7 +203,7 @@
             {
               "position": ["", "0%", "", "50%"],
               "size": ["75%", "75%"],
-              "url": "avg/image/Avatar_Fall_Animation.gif",
+              "url": "/avg/image/Avatar_Fall_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "className": "falling",
@@ -217,7 +217,7 @@
             {
               "position": ["", "10%", "", "25%"],
               "size": ["105%", "105%"],
-              "url": "avg/image/Avatar_Fall_Animation.gif",
+              "url": "/avg/image/Avatar_Fall_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "className": "falling",
@@ -231,7 +231,7 @@
             {
               "position": ["", "10%", "", "25%"],
               "size": ["105%", "105%"],
-              "url": "avg/image/Avatar_Fall_Animation.gif",
+              "url": "/avg/image/Avatar_Fall_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "className": "falling",
@@ -246,7 +246,7 @@
             {
               "position": ["", "10%", "", "25%"],
               "size": ["105%", "105%"],
-              "url": "avg/image/Avatar_Fall_Animation.gif",
+              "url": "/avg/image/Avatar_Fall_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "className": "falling",
@@ -258,12 +258,11 @@
           "controll": "hidden_here",
           "go_to": "interlude",
           "event": "intro_end",
-          "js": "",
           "art": [
             {
               "position": ["", "10%", "", "25%"],
               "size": ["105%", "105%"],
-              "url": "avg/image/Avatar_Fall_Animation.gif",
+              "url": "/avg/image/Avatar_Fall_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "className": "falling",
@@ -274,7 +273,7 @@
         }
       ],
       "background_color": "rgb(0,0,0)",
-      "background_music": "avg/audio/School_days"
+      "background_music": "/avg/audio/School_days"
     }
   ],
   "interlude": [
@@ -291,9 +290,9 @@
         { "text": "你想起來了。你是滑下去了、然後就墜落了。" },
         { "text": "你的腦袋昏昏沈沈的，好像做了一整天的夢。" }
       ],
-      "background_music": "avg/audio/Fragile",
+      "background_music": "/avg/audio/Fragile",
       "background_color": "rgb(0,0,0)",
-      "background_image": "avg/image/Avatar_Fall.png"
+      "background_image": "/avg/image/Avatar_Fall.png"
     },
     {
       "dialogs": [
@@ -313,9 +312,9 @@
         },
         { "text": "" }
       ],
-      "background_music": "avg/audio/Fragile",
+      "background_music": "/avg/audio/Fragile",
       "background_color": "rgb(0,0,0)",
-      "background_image": "avg/image/stars.jpg"
+      "background_image": "/avg/image/stars.jpg"
     }
   ],
   "outro": [
@@ -325,7 +324,7 @@
         { "text": "Hello！" },
         { "text": "聽得見嗎？" }
       ],
-      "background_image": "avg/image/white.jpg"
+      "background_image": "/avg/image/white.jpg"
     },
     {
       "dialogs": [
@@ -344,12 +343,12 @@
         { "text": "而這比起你的生命根本不算什麼，" },
         { "text": "你的生命正在展開，它還是嶄新的。" }
       ],
-      "background_music": "avg/audio/Way_to_home",
-      "background_image": "avg/image/summer1.jpg"
+      "background_music": "/avg/audio/Way_to_home",
+      "background_image": "/avg/image/summer1.jpg"
     },
     {
-      "background_image": "avg/image/white.jpg",
-      "background_music": "avg/audio/Way_to_home",
+      "background_image": "/avg/image/white.jpg",
+      "background_music": "/avg/audio/Way_to_home",
       "dialogs": [
         {
           "text": "故事到這就結束了，你要回到現實了。",
@@ -357,7 +356,7 @@
             {
               "position": ["30%", "0", "10%", "0"],
               "size": ["80%", "80%"],
-              "url": "avg/image/Avatar_End_Animation.gif",
+              "url": "/avg/image/Avatar_End_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"]
             }
@@ -369,7 +368,7 @@
             {
               "position": ["30%", "0", "10%", "0"],
               "size": ["80%", "80%"],
-              "url": "avg/image/Avatar_End_Animation.gif",
+              "url": "/avg/image/Avatar_End_Animation.gif",
               "fit": "contain",
               "hotspot": ["0%", "0%"]
             }
@@ -381,7 +380,7 @@
             {
               "position": ["-20%", "0", "-40%", "0"],
               "size": ["200%", "200%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -396,7 +395,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["200%", "200%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -411,7 +410,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -426,7 +425,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -441,7 +440,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -456,7 +455,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": "avg/image/Avatar_Line_White.png",
+              "url": "/avg/image/Avatar_Line_White.png",
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -471,7 +470,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": { "zh-Hant": "avg/image/Avatar_Line_White.png" },
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_White.png" },
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
@@ -486,7 +485,7 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": { "zh-Hant": "avg/image/Avatar_Line_White.png" },
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_White.png" },
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
