@@ -9,7 +9,7 @@
     <p class="message-text" id="Message6">活著有時很痛苦，</p>
     <p class="message-text" id="Message7">會有快樂的事情嗎？</p>
     <p class="message-text" id="Message8">我真正想要的<br /><br />是 ……</p>
-    <p class="message-text" id="Message9">滑動進入下一幕</p>
+    <p class="message-text" id="Message9">向下滑動進入下一幕</p>
     <img
       id="Avatar"
       src="/avg/image/Avatar_Fall_Animation.gif"
@@ -37,6 +37,7 @@
           hover="true"
           v-tooltip="{
             text: firsthand.find((f) => f.id == `firsthand${index}`)?.title,
+            theme: { placement: 'top' },
           }"
           class="window_trigger data-v-tooltip arrow"
           @click="openWindow(index)"
@@ -261,10 +262,10 @@ h1 {
   position: absolute;
   font-weight: bold;
   margin: 3%;
-  font-size: 1.5em;
-  top: 100%;
+  font-size: 1.2em;
+  top: 99%;
   left: 5vw;
-  opacity: 0.7;
+  opacity: 0.2;
   color: white;
 }
 #ContentBox {

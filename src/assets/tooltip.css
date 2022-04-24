@@ -4,12 +4,12 @@
     --v-tooltip-translate: translate(-50%, -110%);
     --v-tooltip-left-offset: 0px;
     --v-tooltip-top-offset: 0px;
-    --v-tooltip-width: 200px;
+    --v-tooltip-width: 7em;
     --v-tooltip-background-color: #000000;
     --v-tooltip-color: #ffffff;
     --v-tooltip-border-radius: 0.4rem;
     --v-tooltip-padding: 0.6em;
-    --v-tooltip-font-size: 0.8rem;
+    --v-tooltip-font-size: 0.8em;
     --v-tooltip-border: none;
     --v-tooltip-box-shadow: none;
     --v-tooltip-transition-duration: 0.25s;
@@ -29,6 +29,7 @@
 
 
     .data-v-tooltip::after {
+        text-align: center;
         z-index: 99999;
         content: attr(data-v-tooltip);
         position: absolute;
