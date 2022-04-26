@@ -1,5 +1,5 @@
 let story_json = new Array();
-var tuesday = document.getElementById("tuesday");
+let tuesday = document.getElementById("tuesday");
 var tue_text_view;
 var tue_text_block;
 var tue_text_element;

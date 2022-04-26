@@ -313,7 +313,7 @@
         { "text": "" }
       ],
       "background_music": "/avg/audio/Fragile",
-      "background_color": "rgb(0,0,0)",
+      "background_color": "transparent",
       "background_image": "/avg/image/stars.jpg"
     }
   ],

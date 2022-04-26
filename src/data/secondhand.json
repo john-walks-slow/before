@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "title": "《入殮師》 / 日本劇情片 / 導演瀧田洋二",
+    "description": "這是一個事業失敗意外開始從事傳統祭祀的年輕人經歷外界諸多質疑的故事。影片以一名入殮師新手的視角，去見證各種各樣的死亡和葬禮儀式。面對著身邊人因強烈的社會忌諱而對他產生的偏見，主角最終以嚴謹的工作態度和對死者的尊重贏得其他人的敬重，並從中更深入理解到人與人之間聯繫的重要性。",
+    "review": "這部影片強調了對死亡的忌諱以及與死亡有關工作的價值之間存在的反差。小學的時候，老師讓大家在課堂上看，帶我了解入殮師這個職業，也讓我更了解死亡，了解世俗的偏見和狹隘。是一部很有啟發的片子！",
+    "quote": "“我只想讓你做普通的工作。”"
+  },
+  {
+    "id": 2,
+    "title": "《積存時間的生活》 / 日本紀錄電影 / 導演伏原健之",
+    "description": "這部電影紀錄了津端夫婦在21世紀日本度過的恬適田園生活。他們二人都年近九十，卻因充滿文化底蘊的生命哲學和自在的生活態度而過著慢活的晚年。日子簡單但非常幸福。",
+    "review": "紀錄片風格獨特，能帶來最本質、最真實的感觸。死亡或許令人畏懼，時間在不停流逝的時候，我們又該如何面對自己，找到生活？或許你在這部片子裡能有所收穫。\n（津端夫婦所著同名書籍也很值得一看！）",
+    "quote": "「我們無法給下一代金錢財產，但能留下富饒的土壤，讓他們能種出甜美的果實。」"
+  },
+  {
+    "id": 3,
+    "title": "《死後四十種生活》Forty Tales from the Afterlife / 作者大衞．伊葛門 David Eagleman",
+    "description": "這本書從四十篇獨立故事展現出多種死後世界的樣貌。透過伊葛門無比的想像力，他筆下種種不同的可能性解釋了我們的存在與生死的意義。天堂與地獄，只有這兩種選擇嗎？",
+    "review": "這本書用一種充滿思考而新奇的方式探討死亡的未來，消解我們對死亡的未知感。故事的描述以高級的黑色幽默和批判帶過，發人深省，促使我們以不同的角度看待自己的生命。",
+    "quote": "死亡有三階段，第一階段是身體停止運作，第二階段是身體被埋入墓穴，第三階段是你的名字最後一次被呼喚的未來那一刻。"
+  },
+  {
+    "id": 4,
+    "title": "《擺渡人》Ferryman / 英國小説 / 作家克萊兒·麥克福爾（Claire Mcfall）",
+    "description": "故事講述主角迪倫在火車事故中喪生，與自己的靈魂擺渡人崔斯坦經歷各種磨難，走過荒原，最終到達天堂的彼岸。作者從少年人的角度洞悉人性的温情，通過主角的所見所感，道出所有人對親情、友情和愛情終極幸福的嚮往。",
+    "review": "當我們面對生存、死亡與愛，該如何做出讓自己不後悔的選擇？這本書是一種對死後世界的想象，對救贖與生命意義的探討。\n生存和死亡可以有多樣的定義，生命的意義也許在於和這世界千絲萬縷的聯係，這些聯係不斷，生命的意義也將延續……",
+    "quote": "如果我真的存在，也是因为你需要我。（I exist because you need me.）"
+  },
+  {
+    "id": 5,
+    "title": "《活著》 / 作者余華",
+    "description": "故事講述一個地主少爺富貴嗜賭成性，賭光家業、一貧如洗，窮困中的他因為母親生病前去求醫，半路上卻被國民黨部隊抓去，然後被解放軍所俘虜，經歷了千辛萬苦回家後才知道母親已經去世。妻子家珍帶大了一雙兒女，但女兒不幸變成了聾啞人。此後，他生命裡難得的親情一次次地被死亡撕扯得粉碎，最後只剩下一頭老牛陪他過日子。",
+    "review": "雖然書名為《活著》，但全篇都是以死亡貫穿；看起來瀰漫死亡，但又刻骨地講述了求生的生活感念。到底親人全都離世，只剩自己的人生有沒有意義呢？故事的結尾交代富貴已經看透生死，不再懼怕死亡。有些人認為他只是無奈接受了生活的滄桑，有些則覺得他達到了一種超然曠達的境界。大家不妨閱讀這本書自己下判斷，思考活著的意義～",
+    "quote": "人是為活著本身而活著，而不是為活著以外的任何事所活著。"
+  },
+
+  {
+    "id": 6,
+    "title": "《尋夢環游記》Coco / 美國皮克斯動畫 / 導演李·昂克里奇、阿德里安·莫利納 Lee Unkrich",
+    "description": "墨西哥小男孩米格因為觸碰了一把吉他而踏上了亡靈土地，他在亡靈世界重逢了已經過世的太爺爺和祖輩們，一家人想盡辦法將米格重新送回人間。",
+    "review": "這部電影探討了親情和追夢等話題，也令大家思考死亡的定義。每個人忙碌一生，甚至追逐名利，為的就是不被忘記。因為肉體的死亡並不代表結束，被所有人遺忘才是生命真正的終結。",
+    "quote": "真正的死亡是世界上再没有一个人记得你。（The real death is that no one in the world remembers you.）"
+  },
+  {
+    "id": 7,
+    "title": "《心靈奇旅》Soul / 美國動畫電影 / 導演彼特·道格特 Pete Docter",
+    "description": "熱愛爵士樂的中學音樂教師喬伊·高納在瀕死狀態下，令靈魂誤入靈魂的生來之處。他與厭世的靈魂22相遇，攜手返回現實世界，再在種種奇幻的境遇中反思和尋找生命的意義。",
+    "review": "這部電影在最接近死亡的狀態中體悟生的意義，向死而生。很多人懼怕死亡，是因爲生命擁有太多遺憾。比起對死亡的恐懼，努力過好生命的每一天才是對生命最大的尊重。雖然人的一生不一定非常精彩，但我們可以在平凡的日子中找到快樂，所以我們要懂得活在當下，好好享受當刻的人生。",
+    "quote": "把寻常的人生过好，才是最不寻常的事。"
+  },
+  {
+    "id": 8,
+    "title": "《超新約全書》 / 歐洲奇幻喜劇電影 / 導演雅克·範·多梅爾",
+    "description": "上帝的女兒反叛父親，將所有人的生命期限公佈出來。知道了自己生命期限的人們用不同的態度對待自己餘下的時光。",
+    "review": "死亡的時間其實是人生中無數個路標中的一個，也是最後一個。人，不是靠知道自己還有幾天而活下去的，而是因為對所有（包括死亡）的未知才活下去。",
+    "quote": "尽管时光飞逝，引导我走向死亡，但我毫不在意。生活终于变成了我梦想中的模样。生活是娇艳欲滴的红梅，远方是神秘莫测的旅途，我的余生是对美丽的终极探索 ​​。"
+  },
+  {
+    "id": 9,
+    "title": "《迪克·約翰遜的去世》 / 美國劇情記錄片 / 導演克斯汀·約翰遜",
+    "description": "主角是紀錄片導演克斯汀·約翰遜的父親。隨着年事已高的他在女兒克斯汀·約翰遜的請求下，開始和特殊化妝團隊及替身演員合作，預演自己各種意料之外、情理之中的死法。",
+    "review": "這部紀錄片記錄了生命不斷凋零的瞬間。這些死亡預演不是開死亡的玩笑，或對生命的價值嘻皮笑臉，而是以一種不避諱死亡的豁達態度，將遺憾減至最輕。如果能接受現實，人生會容易很多。你無法控制很多事情，即使是對抗也無濟於事，你無法控制疾病、死亡，那你就必須學會接受。",
+    "quote": "如果愛的回饋都是美好的，人生會輕鬆許多。但愛所要求的是，我們要面對失去彼此的恐懼。"
+  },
+  {
+    "id": 10,
+    "title": "Tuesdays with Morrie / Non-fiction / Mitch Albom",
+    "description": "Tuesdays with Morrie is a memoir written by Mitch Albom about a series of visits he made to his former sociology professor Morrie Schwartz, who eventually died of amyotrophic lateral sclerosis. Mitch was originally frustrated with how he lived, yet after engaging in thoughtful discussions with Morrie about grief, death, love and happiness, it changed his outlook on life.",
+    "review": "It is a very beautifully written book that teaches me the practice of forgiveness, and reminds me to live every day like it is my last. For only when we realize the imminence of death and accept the possibility of the “due date”, would we be prompted to appreciate and value what we have.",
+    "quote": "The real lesson is not how to live, but how to face death itself."
+  },
+  {
+    "id": 11,
+    "title": "When Breath Becomes Air / Non-fiction / Paul Kalanithi",
+    "description": "At the age of thirty-six, on the verge of completing a decade's training as a neurosurgeon, Paul Kalanithi was diagnosed with inoperable lung cancer. When Breath Becomes Air chronicles his transformation from a medical student asking what makes a virtuous and meaningful life into a neurosurgeon working in the core of human identity and finally into a patient and a new father.",
+    "review": "It is an unpolished and extraordinarily human story that explores how to live a good life and how to die from both the perspectives of a patient and a doctor. The book takes its readers on a breathtaking and utterly compelling journey through a young man’s struggle with terminal illness. It is told with the sensitivity, fluency and stark honesty of a poet, coupled with compassion and hurt when Kalanithi delves into this age-old dilemma of humankind and tells us his painfully gained insights about mortality.",
+    "quote": "Life isn’t about avoiding suffering, grasp the chance to enjoy it the way you want when it lasts."
+  },
+  {
+    "id": 12,
+    "title": "Me Before You / Movie, Fiction / Jojo Moyes",
+    "description": "Me Before You tells the story of quirky Louisa Clark who struggles to make ends meet, crossing paths with Will Traynor after she takes the job as a caregiver for this paralysed man. Will becomes very cynical after his motorcycle incident, yet Louisa’s presence changes him as she patiently shows him that life is still worth living. As their relationship develops, both of their lives metamorphose into something neither could have ever imagined.",
+    "review": "The ending is so heart wrenching and emotional that it makes me cry. The author addresses the topic of human nature beautifully and shows how different people see hardships in their life. The moral of the story is for us to treasure life, as for some people, being able to live freely without physical constraints is already a luxury. I absolutely adore the message and the devastating romance in this movie/ book.",
+    "quote": "Just live well, just live and be unapologetically you."
+  },
+  {
+    "id": 13,
+    "title": "Participant, Episodes for My Last Days / Documentary, Youtube Channel / Justin Baldoni",
+    "description": "It is an uplifting documentary series about life, as told by many courageous people living with terminal illnesses. It talks about how these amazing individuals make the most of the time they have left knowing that they only have a few months or years to live.",
+    "review": "The most memorable episode I watched is the one about Claire Wineland. She was a young girl who had Cystic Fibrosis since birth. Despite suffering from a prolonged illness that will eventually damage her organs, she still stayed cheerful and believed that one could find beauty in suffering. She didn’t want to be confined by her sickness so she was a huge advocate of giving and inspiring others in spite of her pain. The way she lived her life made me realize that there is so much I could do with mine, and how I should live it with pride and power.",
+    "quote": "You can’t put your life on hold until your “better” life begins. You have to fight like hell to make sure that the life reflected back at you right now is one you want to be living."
+  },
+  {
+    "id": 14,
+    "title": "Man’s Search for meaning / Book / Victor Frankl",
+    "description": "This book discusses the meaning of life in the perspective of Jewish victims of WWII in Auschwitz. It talks about how prisoners managed to survive despite the horrid conditions, while many in modern days choose to commit suicide being in a relatively better position than those in war.",
+    "review": "By exploring the meaning of life in the view of survivors, I learnt a lot about death. Death terminates life, so the motive to live must be one to prevent death. This book has given me a strong reminder that to conquer death, you have to live the best of your life, in accordance with your own understanding of the meaning of life.",
+    "quote": "We cannot control what happens to us in some circumstances, that we can — through acceptance and search for meaning — cultivate an attitude that will enable us to endure the most difficult of life's situations."
+  }
+]

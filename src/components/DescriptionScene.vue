@@ -15,13 +15,19 @@
     <div id="BG" class="max flex">
       <img id="Avatar" :src="require('/src/assets/Avatar_Back.png')" />
       <img id="AvatarLine" :src="require('/src/assets/Avatar_Line.png')" />
-      <img
-        class="flex a-center"
-        id="Title"
-        :src="require('/src/assets/title.png')"
-        :class="{ fade: isDescriptionShow == true }"
-      />
+      <div id="Title" class="v-flex a-center">
+        <img
+          :src="require('/src/assets/title.png')"
+          :class="{ fade: isDescriptionShow == true }"
+        />
+        <img
+          id="Logline"
+          :src="require('/src/assets/logline.png')"
+          :class="{ fade: isDescriptionShow == true }"
+        />
+      </div>
     </div>
+
     <button
       id="ContinueButton"
       class="flex a-center button"
@@ -80,26 +86,34 @@ export default {
 #Title {
   width: 50%;
   max-width: 500px;
-  margin-top: 30vh;
+  margin-top: 20vh;
   display: block;
   z-index: 2;
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
+}
+#Logline {
+  max-width: 90%;
+  margin: 10% 10% 0 10%;
 }
 #BG {
   background-color: rgb(228, 228, 228);
 }
 #ContinueButton {
   position: absolute;
-  bottom: 30vh;
+  font-size: 1em;
+  bottom: 18vh;
+
   width: 100px;
   left: 0;
   right: 0;
   margin: auto;
   background-color: rgb(255, 255, 255);
   transition: opacity 1200ms, transform 1200ms, top 1200ms, bottom 1200ms;
+  // border-radius: 10px;
+  // color: white;
+  // background-color: rgb(105, 105, 105);
 }
 #ContinueButton.moved {
-  bottom: 20vh;
 }
 #AvatarLine {
   position: fixed;

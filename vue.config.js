@@ -19,7 +19,7 @@ module.exports = defineConfig({
       msTileImage: "img/icons/ms-icon-144x144.png",
     },
     manifestOptions: {
-      orientation: "landscape",
+      // orientation: "landscape",
       icons: [
         {
           src: "./img/icons/android-icon-192x192.png",

@@ -61,14 +61,16 @@
       >
       <img
         id="ContentBGContain"
+        v-show="window"
         :class="{ 'view-picture': picture, 'no-transition': noTransition }"
-        :src="window ? `/img/firsthand${window}.png` : ``"
+        :src="images[`firsthand${window}.png`]"
         alt=""
       />
       <img
         id="ContentBG"
+        v-show="window"
         :class="{ 'view-picture': title, 'no-transition': noTransition }"
-        :src="window ? `/img/firsthand${window}.png` : ``"
+        :src="images[`firsthand${window}.png`]"
         alt=""
       />
       <div
@@ -102,6 +104,14 @@
 import router from "../router/index.js";
 
 import firsthand from "../data/firsthand.json";
+function importAll(r) {
+  let images = {};
+  r.keys().map((item) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+}
+
 let intervalId, timerId;
 export default {
   name: "BuildingScene",
@@ -114,14 +124,16 @@ export default {
       picture: false,
       title: false,
       noTransition: false,
+      images: importAll(
+        require.context("../assets/", false, /\.(png|jpe?g|svg)$/)
+      ),
     };
   },
   components: {},
-  beforeRouteUpdate(to) {
-    this.window = to.params.id;
-  },
+  // beforeRouteUpdate(to) {},
   methods: {
     openWindow(id) {
+      router.push("/building/" + id.toString());
       this.window = id;
       this.title = true;
       this.picture = false;
@@ -132,6 +144,7 @@ export default {
       // document.body.classList.add("no-scroll");
     },
     closeWindow() {
+      router.push("/building");
       this.noTransition = true;
       this.window = false;
       this.picture = false;
@@ -147,6 +160,10 @@ export default {
       // document.body.classList.remove("no-scroll");
     },
     enterScene() {
+      this.window = this.$route.params.id;
+      for (let f of firsthand) {
+        fetch(this.images[`${f.id}.png`]);
+      }
       scrollTo(0, 0);
       intervalId = setInterval(() => {
         var h = document.body,
@@ -347,8 +364,8 @@ h1 {
 }
 #PictureButton {
   position: fixed;
-  right: 30px;
-  top: calc(10px + 0.2em);
+  right: 40px;
+  bottom: calc(10px + 0.2em);
   font-size: 0.9em;
   z-index: 999999;
   cursor: pointer;

@@ -34,7 +34,7 @@ export default {
   background: white;
   width: 100vw;
   height: calc(100vh - calc(100vh - 100%));
-  z-index: 9999999;
+  z-index: 99999999;
   padding: 30vh 10vw;
 }
 #Progress {

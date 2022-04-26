@@ -1,6 +1,53 @@
 <template>
   <div class="max">
     <LoadingScene />
+    <div
+      id="HelpContainer"
+      class="arrow"
+      v-tooltip="{
+        text: '需要帮助？',
+        theme: { placement: 'bottom' },
+      }"
+    >
+      <img
+        :src="require('@/assets/healthcare.png')"
+        id="Help"
+        hover="true"
+        @click="help = !help"
+      />
+    </div>
+    <transition name="fade">
+      <div id="Modal" class="modal" :class="{ 'is-active': help }" v-if="help">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">需要幫助？</p>
+              <button
+                class="delete"
+                aria-label="close"
+                @click="help = false"
+              ></button>
+            </header>
+            <div class="card-content">
+              <div class="content" id="HelpContent">
+                這是我們收集的一些心理咨詢 /
+                自殺防治熱綫，若有需要請尋求幫助。<br /><br />
+                <h2>香港：</h2>
+                <br />999 为香港境内的紧急求救电话<br />香港撒玛利亚防止自杀会：2896
+                0000.<br />生命热线[7] ：24小时热线: 2382 0000 /长者热线: 2382
+                0881 / 青少年专线: 2382 0777.<br />向晴热线: 18288<br /><br />
+                <h2>大陸：</h2>
+                <br />青少年法律与心理咨询热线[6]：12355<br />婦女兒童心理諮詢熱線：12338<br />心理衛生熱線：12320<br />（希望24）全國生命危機干預熱線：4001619995<br />生命求助熱線危機干預熱線：023-66699199，666992999<br />北京自杀研究防治中心专线[2]
+                800-810-1117 / 010-82951332<br />上海生命线[3] ：
+                400-821-1215<br />上海市精神卫生中心[4] ：021-12320-5 /
+                021-64387250<br />广州市心理危机干预中心[5] ：020-81899120<br />110、120、119可分别拨打到中国大陆的公安局（警察）、医院以及提供社会救助（包括自杀救助）的消防救援机构以处理紧急情况。<br /><br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <keep-alive include="AVGScene">
@@ -20,11 +67,52 @@ export default {
   components: {
     LoadingScene,
   },
+  data() {
+    return {
+      help: false,
+    };
+  },
   mounted: function () {},
 };
 </script>
 
 <style lang="scss">
+#HelpContent {
+  white-space: pre-line;
+}
+#HelpContainer {
+  position: fixed;
+  top: 3.15%;
+  right: 2.9%;
+  z-index: 9999999;
+  width: 60px;
+  height: 70px;
+  padding: 8px;
+  border-radius: 100%;
+}
+.modal {
+  z-index: 9999999;
+}
+#Help {
+  position: fixed;
+  top: 3.15%;
+  right: 2.9%;
+  z-index: 9999999;
+  /* -webkit-clip-path: circle(); */
+  /* clip-path: circle(); */
+  width: 60px;
+  background: #ffffff;
+  opacity: 0.6;
+  padding: 8px;
+  border-radius: 100%;
+  box-shadow: 0px 2px 5px 1px #00000020;
+  cursor: pointer;
+  transition: all 400ms;
+}
+#Help:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
 // @font-face {
 // font-family: handwriting;
 // src: url("/src/assets/余温浅浅.ttf");
@@ -43,6 +131,7 @@ iframe footer {
 }
 html {
   overflow: hidden;
+  font-size: calc(min(4vw, 2.6vh));
 }
 body {
   color: black;
@@ -55,24 +144,23 @@ body {
   overflow: auto;
   overflow-x: hidden;
   background: black;
-  font-size: calc(min(4vw, 3vh));
 }
 
 body.no-scroll {
   overflow: hidden;
 }
 *::-webkit-scrollbar-track {
-  border: 0.05vw solid black;
-  background-color: #f5f5f5;
+  border: 0.05vw solid #22222250;
+  background-color: #f5f5f550;
 }
 
 *::-webkit-scrollbar {
   width: 0.5vw;
-  background-color: #f5f5f5;
+  background-color: #f5f5f550;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #00000050;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -114,6 +202,12 @@ body.no-scroll {
 
 #tuesday.white #tue_text_view {
   color: white !important;
+}
+#tuesday.fade {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0px);
+  transition: opacity 1200ms 0.5s !important;
 }
 // #tuesday.white #tue_next {
 //   width: 100vw !important;
@@ -291,5 +385,14 @@ body.no-scroll {
     opacity: 1;
     transition: opacity 0.15s;
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
