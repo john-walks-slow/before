@@ -1673,7 +1673,8 @@ function audioVolumeOut(q) {
 };
 function sound_stop(id) {
   document.getElementById(id).currentTime = 0;
-  document.getElementById(id).pause();
+  audioVolumeOut(document.getElementById(id));
+  // document.getElementById(id).pause();
   // audioVolumeOut(document.getElementById(id));
 }
 function add_style(file) {

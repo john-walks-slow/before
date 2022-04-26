@@ -11,7 +11,7 @@ const routes = [
   },
   { path: "/story/:id", component: AVGScene },
   { path: "/building/:id?", component: BuildingScene },
-  { path: "/star", component: StarScene },
+  { path: "/star/:id?", component: StarScene },
   { path: "/end", component: EndScene },
 ];
 const router = createRouter({

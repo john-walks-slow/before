@@ -68,7 +68,16 @@
     "font_files": {},
     "variables": {},
     "characters": {},
-    "sounds": { "click": "/avg/audio/click" }
+    "sounds": {
+      "click": "/avg/audio/click",
+      "rm": "/avg/audio/rm",
+      "laugh": "/avg/audio/laugh",
+      "phone": "/avg/audio/phone",
+      "glass": "/avg/audio/glass",
+      "crash": "/avg/audio/crash",
+      "city": "/avg/audio/city",
+      "whoosh": "/avg/audio/whoosh"
+    }
   },
   "blocks": {
     "hidden": ["124.458px", "355.229px", "block", false],
@@ -145,8 +154,11 @@
           "text": "一天，你在宿舍門前聽見室友們在討論你……",
           "js": "tuesday.tilt('14%','100%',100000)"
         },
-        { "text": "「你們覺不覺得她好土啊？她穿的衣服像我外婆的一樣。」" },
-        { "text": "之後傳來一陣開朗的笑聲。" },
+        {
+          "text": "「你們覺不覺得她好土啊？她穿的衣服像我外婆的一樣。」",
+          "sound": "rm"
+        },
+        { "text": "之後傳來一陣開朗的笑聲。", "sound": "laugh" },
         {
           "text": "從那以後，她們就喜歡拿你開玩笑，還給你取了外號叫「大山」。"
         },
@@ -167,13 +179,17 @@
       "dialogs": [
         {
           "text": "上週末，你照例和唯一能夠聊天的外教爺爺打電話，卻沒有人接。",
-          "js": "tuesday.tilt('80%','0%',50000);tuesday.tiltX()"
+          "js": "tuesday.tilt('80%','0%',50000);tuesday.tiltX()",
+          "sound": "phone"
         },
         {
           "text": "過去一整年裡，每周你們都會有固定的時間聊天，因此那週沒人接的時候，你陷入了極度的焦慮之中。"
         },
         { "text": "幾天后終於聯繫到外教爺爺，卻得知了他突然去世的消息。" },
-        { "text": "那一刻，你覺得彷彿有什麼東西永遠地失去了。" }
+        {
+          "text": "那一刻，你覺得彷彿有什麼東西永遠地失去了。",
+          "sound_stop": "phone"
+        }
       ],
       "background_music": "/avg/audio/School_days"
     },
@@ -186,11 +202,13 @@
         },
         { "text": "你翻過天台的圍欄，坐在圍欄上。天空是淡淡的灰藍色。" },
         {
-          "text": "向下望，城市還是這麼嘈雜。汽車喇叭聲、狗吠聲、人群的聲音混成一團。"
+          "text": "向下望，城市還是這麼嘈雜。汽車喇叭聲、狗吠聲、人群的聲音混成一團。",
+          "sound": "city"
         },
         { "text": "這一刻你好像是自由的。" },
         {
-          "text": "人生中美好的事情在你腦中浮現。你回憶起中學時的好朋友、外教爺爺和藹的面孔⋯⋯"
+          "text": "人生中美好的事情在你腦中浮現。你回憶起中學時的好朋友、外教爺爺和藹的面孔⋯⋯",
+          "sound_stop": "city"
         }
       ],
       "background_music": "/avg/audio/School_days"
@@ -213,6 +231,8 @@
         },
         {
           "text": "還沒反應過來，你的身體就隨著重力向下滑落。你本能地想抓住欄桿卻抓空了。",
+          "sound": "whoosh",
+
           "art": [
             {
               "position": ["", "10%", "", "25%"],
@@ -284,7 +304,7 @@
           "timer": [500, "tue_go"],
           "js": "tuesday.classList.remove('no-color');tuesday.classList.add('white');"
         },
-        { "text": "隨著一聲巨響，你掉進了一片黑色。" },
+        { "text": "隨著一聲巨響，你掉進了一片黑色。", "sound": "crash" },
         { "text": "一片黑色？這有點不真實。" },
         { "text": "上一個瞬間，你明明還在屋頂呀，漫畫風格的屋頂。" },
         { "text": "你想起來了。你是滑下去了、然後就墜落了。" },
@@ -298,8 +318,9 @@
       "dialogs": [
         {
           "controll": "hidden_here",
-          "timer": [4000, "tue_go"],
-          "js": "tuesday.fade();"
+          "timer": [2000, "tue_go"],
+          "js": "tuesday.fade();",
+          "event": "interlude_bg"
         },
         { "text": "當你睜開眼的時候，你發現自己在一片星空裏。" },
         { "text": "只能這麼形容了……你在一片星空裏。" },
@@ -313,14 +334,17 @@
         { "text": "" }
       ],
       "background_music": "/avg/audio/Fragile",
-      "background_color": "transparent",
-      "background_image": "/avg/image/stars.jpg"
+      "background_image": "/avg/image/galaxy.png",
+      "background_color": "transparent"
     }
   ],
   "outro": [
     {
       "dialogs": [
-        { "text": "嘿！", "js": "tuesday.classList.remove('white');" },
+        {
+          "text": "嘿！",
+          "js": "tuesday.classList.remove('white');tuesday.transition()"
+        },
         { "text": "Hello！" },
         { "text": "聽得見嗎？" }
       ],
@@ -455,12 +479,24 @@
             {
               "position": ["-20%", "0", "-15%", "0"],
               "size": ["250%", "250%"],
-              "url": "/avg/image/Avatar_Line_White.png",
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_White.png" },
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
-              "move": "5",
+              "move": "15",
+              "opacity": "1",
               "className": "Avatar_Line"
+            },
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_Color2.png" },
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "15",
+              "opacity": "0",
+              "className": "Avatar_Line_Color"
             }
           ]
         },
@@ -474,8 +510,20 @@
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
-              "move": "5",
+              "move": "15",
+              "opacity": "0",
               "className": "Avatar_Line"
+            },
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_Color2.png" },
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "15",
+              "opacity": "1",
+              "className": "Avatar_Line_Color"
             }
           ]
         },
@@ -489,8 +537,20 @@
               "fit": "contain",
               "hotspot": ["0%", "0%"],
               "align": ["left", "center"],
-              "move": "5",
+              "move": "15",
+              "opacity": "0",
               "className": "Avatar_Line"
+            },
+            {
+              "position": ["-20%", "0", "-15%", "0"],
+              "size": ["250%", "250%"],
+              "url": { "zh-Hant": "/avg/image/Avatar_Line_Color2.png" },
+              "fit": "contain",
+              "hotspot": ["0%", "0%"],
+              "align": ["left", "center"],
+              "move": "15",
+              "opacity": "1",
+              "className": "Avatar_Line_Color"
             }
           ]
         },

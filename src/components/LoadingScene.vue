@@ -10,6 +10,19 @@
 </template>
 
 <script>
+import firsthand from "../data/firsthand.json";
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+}
+let images = importAll(
+  require.context("../assets/", false, /\.(png|jpe?g|svg)$/)
+);
+
 export default {
   name: "LoadingScene",
   data() {
@@ -18,8 +31,18 @@ export default {
     };
   },
   mounted: function () {
-    window.addEventListener("load", () => {
+    window.addEventListener("load", async () => {
       this.show = false;
+      for (let f of firsthand) {
+        await fetch(images[`${f.id}.png`]);
+      }
+      for (let i = 1; i <= 9; i++) {
+        await fetch(images[`window${i}.png`]);
+      }
+      for (let image in images) {
+        // console.log(image);
+        await fetch(images[image]);
+      }
     });
   },
 };

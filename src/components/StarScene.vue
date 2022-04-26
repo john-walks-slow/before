@@ -1,6 +1,6 @@
 <template>
   <div class="max">
-    <div id="BG" @click="goN">
+    <div id="BG">
       <div class="stars"></div>
       <div class="twinkling"></div>
     </div>
@@ -37,7 +37,7 @@
             <button
               class="delete"
               aria-label="close"
-              @click="modal = false"
+              @click="closeModal()"
             ></button>
             <div class="card-content">
               <img id="BookImage" :src="images[`secondhand${modal}.png`]" />
@@ -109,9 +109,23 @@ export default {
       router.push("/story/outro");
     },
     openModal(id = 1) {
+      router.push("/star/" + id.toString());
       this.modal = id;
       this.first = false;
     },
+    closeModal() {
+      router.push("/star");
+      this.modal = false;
+    },
+    enter() {
+      if (this.$route.params.id) {
+        this.modal = this.$route.params.id;
+        this.first = false;
+      }
+    },
+  },
+  activated() {
+    this.enter();
   },
   mounted() {
     /* global TagCanvas */
@@ -139,6 +153,7 @@ export default {
       initial: [0.008, 0.004],
       outlineMethod: "colour",
     });
+    this.enter();
   },
 
   data() {

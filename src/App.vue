@@ -77,6 +77,10 @@ export default {
 </script>
 
 <style lang="scss">
+.card {
+  height: 100%;
+  overflow: auto;
+}
 #HelpContent {
   white-space: pre-line;
 }
@@ -150,17 +154,17 @@ body.no-scroll {
   overflow: hidden;
 }
 *::-webkit-scrollbar-track {
-  border: 0.05vw solid #22222250;
-  background-color: #f5f5f550;
+  border: 0.05vw solid #222222;
+  background-color: #f5f5f5;
 }
 
 *::-webkit-scrollbar {
   width: 0.5vw;
-  background-color: #f5f5f550;
+  background-color: #f5f5f5;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #00000050;
+  background-color: #000000;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -207,7 +211,7 @@ body.no-scroll {
   opacity: 0;
   pointer-events: none;
   transform: translateY(0px);
-  transition: opacity 1200ms 0.5s !important;
+  transition: opacity 1200ms !important;
 }
 // #tuesday.white #tue_next {
 //   width: 100vw !important;
@@ -388,11 +392,14 @@ body.no-scroll {
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition-delay: 0s;
+  transition: opacity 1s ease;
+  opacity: 1 !important;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+  transition-delay: 0s;
+  opacity: 0 !important;
 }
 </style>

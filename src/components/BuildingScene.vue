@@ -161,9 +161,7 @@ export default {
     },
     enterScene() {
       this.window = this.$route.params.id;
-      for (let f of firsthand) {
-        fetch(this.images[`${f.id}.png`]);
-      }
+
       scrollTo(0, 0);
       intervalId = setInterval(() => {
         var h = document.body,
@@ -301,6 +299,7 @@ h1 {
   background-size: cover !important;
   transition: opacity 800ms ease-in-out 0.1s, transform 1100ms 0.1s,
     filter 1500ms 0.1s;
+  transition-delay: 200ms;
   pointer-events: auto;
 }
 #ContentBox.content-fade {
@@ -308,6 +307,8 @@ h1 {
   pointer-events: none;
   transform: rotate(0deg) scale(0.1) !important;
   filter: blur(10px);
+  transition-delay: 0ms;
+
   transition: opacity 450ms ease-in-out, transform 450ms, filter 1500ms;
 }
 #ContentBG {
@@ -384,7 +385,7 @@ h1 {
   overflow: auto;
   height: 100%;
   line-height: 2;
-  font-size: 0.8em;
+  font-size: 0.9em;
   overflow: auto;
   transition: all 1000ms 300ms;
 }
@@ -400,7 +401,7 @@ h1 {
   background-color: black;
   overflow: auto;
   line-height: 2;
-  font-size: 2em;
+  font-size: 2.2em;
   z-index: 9;
   overflow: auto;
   opacity: 0;
@@ -414,6 +415,12 @@ h1 {
   // top: 12vh;
   opacity: 1;
 }
+#Sky.fade-enter-active,
+#Sky.fade-leave-active {
+  transition: opacity 1.5s ease;
+  transition-delay: 1.5s;
+}
+
 #Sky {
   width: 100%;
   position: absolute;
