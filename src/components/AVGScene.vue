@@ -11,7 +11,6 @@
 import router from "../router/index.js";
 // const STORY_LIST = ["intro", "interlude", "outro"];
 /*global go_to*/
-/*global load_story*/
 /* global tuesday */
 export default {
   name: "AVGScene",

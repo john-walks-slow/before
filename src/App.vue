@@ -1,6 +1,8 @@
 <template>
   <div class="max">
-    <LoadingScene />
+    <transition name="fade">
+      <LoadingScene @loaded="this.loading = false" v-if="loading" />
+    </transition>
     <div
       id="HelpContainer"
       class="arrow"
@@ -48,7 +50,7 @@
         </div>
       </div>
     </transition>
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }" v-if="!loading">
       <transition name="fade">
         <keep-alive include="AVGScene">
           <component :is="Component" />
@@ -70,6 +72,7 @@ export default {
   data() {
     return {
       help: false,
+      loading: true,
     };
   },
   mounted: function () {},

@@ -1,5 +1,5 @@
 <template>
-  <div id="BG" class="v-flex" :class="{ fade: !show }">
+  <div id="BG" class="v-flex">
     <div class="a-center">正在加載資源 ...</div>
     <progress
       id="Progress"
@@ -26,9 +26,7 @@ let images = importAll(
 export default {
   name: "LoadingScene",
   data() {
-    return {
-      show: true,
-    };
+    return {};
   },
   mounted: function () {
     /*global load_story*/
@@ -36,10 +34,11 @@ export default {
     window.addEventListener("load", async () => {
       load_story("file", "/before.json");
       let listener = tuesday.addEventListener("script_loaded", async () => {
-        this.loaded = true;
+        this.$emit("loaded");
+        await fetch("/avg/audio/School_days.mp3");
+        await fetch("/avg/audio/click.mp3");
         console.log("script loaded");
         tuesday.removeEventListener("script_loaded", listener);
-        this.show = false;
         for (let f of firsthand) {
           await fetch(images[`${f.id}.png`]);
         }
