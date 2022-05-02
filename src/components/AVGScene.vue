@@ -20,7 +20,6 @@ export default {
   },
   data: function () {
     return {
-      loaded: false,
       starBG: false,
       // story: 0,
     };
@@ -28,19 +27,8 @@ export default {
   methods: {
     goTo(id) {
       // if (tuesday.innerHTML == "") {
-      if (!this.loaded) {
-        console.log("creation");
-        load_story("file", "/before.json");
-        let listener = tuesday.addEventListener("script_loaded", () => {
-          this.loaded = true;
-          console.log("loaded");
-          this.goTo(id);
-          tuesday.removeEventListener("script_loaded", listener);
-        });
-      } else {
-        document.getElementById("tuesday").classList.remove("fade");
-        go_to(id);
-      }
+      document.getElementById("tuesday").classList.remove("fade");
+      go_to(id);
     },
   },
 

@@ -8,7 +8,7 @@
       <!-- <h1>The End</h1> -->
       這個故事結束了，你的生活還在繼續。<br />
       衷心地祝願，我們都能在矛盾中走出自己的人生，<br />
-      強烈而独特地活著。<br />
+      強烈而獨特地活著。<br />
       你可以在下方留言，講講你對生、死的體會。<br />
       <router-link to="/building">回到大樓</router-link>
       <router-link to="/star">回到星空</router-link>

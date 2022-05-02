@@ -31,18 +31,26 @@ export default {
     };
   },
   mounted: function () {
+    /*global load_story*/
+    /*global tuesday*/
     window.addEventListener("load", async () => {
-      this.show = false;
-      for (let f of firsthand) {
-        await fetch(images[`${f.id}.png`]);
-      }
-      for (let i = 1; i <= 9; i++) {
-        await fetch(images[`window${i}.png`]);
-      }
-      for (let image in images) {
-        // console.log(image);
-        await fetch(images[image]);
-      }
+      load_story("file", "/before.json");
+      let listener = tuesday.addEventListener("script_loaded", async () => {
+        this.loaded = true;
+        console.log("script loaded");
+        tuesday.removeEventListener("script_loaded", listener);
+        this.show = false;
+        for (let f of firsthand) {
+          await fetch(images[`${f.id}.png`]);
+        }
+        for (let i = 1; i <= 9; i++) {
+          await fetch(images[`window${i}.png`]);
+        }
+        for (let image in images) {
+          // console.log(image);
+          await fetch(images[image]);
+        }
+      });
     });
   },
 };
