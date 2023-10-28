@@ -130,7 +130,9 @@ export default {
     };
   },
   components: {},
-  // beforeRouteUpdate(to) {},
+  beforeRouteUpdate(to) {
+    this.window = to.params.id;
+  },
   methods: {
     openWindow(id) {
       router.push("/building/" + id.toString());
