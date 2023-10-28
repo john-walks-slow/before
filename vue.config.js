@@ -1,4 +1,33 @@
 const { defineConfig } = require("@vue/cli-service");
+const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
+
+let additionalResources = [];
+const PUBLIC_RES_PATH = path.resolve("public");
+function* walkSync(dir) {
+  const files = fs.readdirSync(dir, { withFileTypes: true });
+  for (const file of files) {
+    if (file.isDirectory()) {
+      yield* walkSync(path.join(dir, file.name));
+    } else {
+      yield path.join(dir, file.name);
+    }
+  }
+}
+for (const filePath of walkSync(PUBLIC_RES_PATH)) {
+  // if (filePath.match(/\.(png|xml|html|ico|json|svg|ogg)$/)) {
+  additionalResources.push({
+    url: filePath
+      .slice(filePath.indexOf(PUBLIC_RES_PATH) + PUBLIC_RES_PATH.length + 1)
+      .replaceAll("\\", "/"),
+    revision: crypto
+      .createHash("sha256")
+      .update(fs.readFileSync(filePath))
+      .digest("hex"),
+  });
+  // }
+}
 module.exports = defineConfig({
   transpileDependencies: true,
   outputDir: "docs",
@@ -18,30 +47,21 @@ module.exports = defineConfig({
       maskIcon: null,
       msTileImage: "img/icons/ms-icon-144x144.png",
     },
-    manifestOptions: {
-      // orientation: "landscape",
-      icons: [
+    workboxOptions: {
+      // additionalManifestEntries: additionalResources,
+      // HACK devserver 在开发环境会自己返回一个空的 service-worker。绕开这个限制。
+      swDest: "sw.js",
+      clientsClaim: true,
+      skipWaiting: true,
+      maximumFileSizeToCacheInBytes: 50000000,
+      // include: [/\.(ttf|png|json|ico|js)$/],
+      runtimeCaching: [
         {
-          src: "./img/icons/android-icon-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          src: "./img/icons/android-icon-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-        {
-          src: "./img/icons/android-icon-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-          purpose: "maskable",
-        },
-        {
-          src: "./img/icons/android-icon-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "maskable",
+          urlPattern: /\/$/,
+          handler: "NetworkFirst",
+          options: {
+            cacheName: "index",
+          },
         },
       ],
     },

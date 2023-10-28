@@ -1,8 +1,5 @@
 <template>
   <div class="max">
-    <transition name="fade">
-      <LoadingScene @loaded="this.loading = false" v-if="loading" />
-    </transition>
     <div
       id="HelpContainer"
       class="arrow"
@@ -50,18 +47,20 @@
         </div>
       </div>
     </transition>
-    <router-view v-slot="{ Component }" v-if="!loading">
+    <router-view v-slot="{ Component }">
       <transition name="fade">
-        <keep-alive include="AVGScene">
-          <component :is="Component" />
-        </keep-alive>
+        <LoadingScene v-if="loading" />
       </transition>
+      <keep-alive include="AVGScene">
+        <component :is="Component" />
+      </keep-alive>
     </router-view>
   </div>
 </template>
 
 <script>
 import LoadingScene from "./components/LoadingScene.vue";
+import { Workbox } from "workbox-window";
 
 // const SCENE_LIST = ["Description", "Building", "Star"];
 export default {
@@ -75,7 +74,15 @@ export default {
       loading: true,
     };
   },
-  mounted: function () {},
+  mounted: function () {
+    window.addEventListener("load", () => {
+      this.loading = false;
+      if ("serviceWorker" in navigator) {
+        const wb = new Workbox("/sw.js");
+        wb.register();
+      }
+    });
+  },
 };
 </script>
 
