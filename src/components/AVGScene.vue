@@ -9,9 +9,11 @@
 
 <script>
 import router from "../router/index.js";
+import beforeData from "../data/before.json";
 // const STORY_LIST = ["intro", "interlude", "outro"];
 /*global go_to*/
-/* global tuesday */
+/*global tuesday */
+/*global load_story*/
 export default {
   name: "AVGScene",
   props: {
@@ -32,6 +34,7 @@ export default {
   },
 
   mounted: function () {
+    load_story("data", beforeData);
     tuesday.tilt = (start = "center", end = "100%", duration = 60000) => {
       tuesday.style.backgroundPositionY = `${start}`;
       setTimeout(() => {
