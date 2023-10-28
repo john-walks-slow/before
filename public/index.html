@@ -11,8 +11,13 @@
   <link rel="icon" href="<%= BASE_URL %>/img/icons/favicon.ico">
   <link rel="stylesheet" href="/bulma.min.css">
   <link rel="manifest" href="/manifest.json">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <!-- Load necessary libs that are not included in build process first -->
+  <script defer="defer" type="text/javaScript" src="/tuesday.js"></script>
+  <script defer="defer" type="text/javascript" src="/tagcanvas.js"></script>
+  <!-- built files will be auto injected -->
 </head>
 
 <body>
@@ -22,37 +27,14 @@
   </noscript>
   <div id="tuesday" class="fade"></div>
   <div id="app"></div>
-  <!-- built files will be auto injected -->
-  <script type="text/javaScript" src="/tuesday.js"></script>
-  <script type="text/javascript" src="/tagcanvas.js"></script>
+
   <script>
-    var disqus_config = function() {
+    var disqus_config = function () {
       this.page.url = "https://before-landing.vercel.app"; // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = "before-landing"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
-  </script>
-  <!-- <link rel="preload"  href="/avg/audio/Crisscross.mp3"> -->
 
-  <link rel="preload" as="script" href="/before.json">
-  <link rel="preload" as="image" href="/avg/image/Avatar_Line.png">
-  <link rel="preload" as="image" href="/avg/image/Story1A.png">
-  <link rel="preload" as="image" href="/avg/image/Story1B.png">
-  <link rel="preload" as="image" href="/avg/image/Story1C.png">
-  <link rel="preload" as="image" href="/avg/image/Story1D.png">
-  <link rel="preload" as="image" href="/avg/image/Story1E.png">
-  <link rel="preload" as="image" href="/avg/image/summer1.jpg">
-  <link rel="preload" as="image" href="/avg/image/galaxy.png">
-  <link rel="preload" as="image" href="/avg/image/white.jpg">
-  <link rel="preload" as="image" href="/avg/image/black.jpg">
-  <link rel="preload" as="image" href="/avg/image/Avatar_Fall_Animation.gif">
-  <link rel="preload" as="image" href="/avg/image/Avatar_End_Animation.gif">
-  <link rel="preload" as="image" href="/avg/image/Avatar_Line_White.png">
-  <link rel="preload" as="image" href="/avg/image/Avatar_Fall.png">
-  <link rel="prefetch" href="/avg/audio/rm.mp3">
-  <link rel="prefetch" href="/avg/audio/crash.mp3">
-  <link rel="prefetch" href="/avg/audio/whoosh.mp3">
-  <link rel="prefetch" href="/avg/audio/Fragile.mp3">
-  <link rel="prefetch" href="/avg/audio/Way_to_home.mp3">
+  </script>
 </body>
 
 </html>

@@ -10,52 +10,15 @@
 </template>
 
 <script>
-import firsthand from "../data/firsthand.json";
-
-function importAll(r) {
-  let images = {};
-  r.keys().map((item) => {
-    images[item.replace("./", "")] = r(item);
-  });
-  return images;
-}
-let images = importAll(
-  require.context("../assets/", false, /\.(png|jpe?g|svg)$/)
-);
-
 export default {
   name: "LoadingScene",
   data() {
     return {};
   },
-  mounted: function () {
-    /*global load_story*/
-    /*global tuesday*/
-    window.addEventListener("load", async () => {
-      load_story("file", "/before.json");
-      let listener = tuesday.addEventListener("script_loaded", async () => {
-        this.$emit("loaded");
-        await fetch("/avg/audio/School_days.mp3");
-        await fetch("/avg/audio/click.mp3");
-        console.log("script loaded");
-        tuesday.removeEventListener("script_loaded", listener);
-        for (let f of firsthand) {
-          await fetch(images[`${f.id}.png`]);
-        }
-        for (let i = 1; i <= 9; i++) {
-          await fetch(images[`window${i}.png`]);
-        }
-        for (let image in images) {
-          // console.log(image);
-          await fetch(images[image]);
-        }
-      });
-    });
-  },
+  mounted: function () {},
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #BG {
   position: fixed;

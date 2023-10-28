@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "./registerServiceWorker";
 import tooltip from "./directives/tooltip.js";
 import "@/assets/tooltip.css";
 import router from "./router/index.js";
