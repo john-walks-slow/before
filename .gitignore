@@ -21,3 +21,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 /docs
+/src/assets/raw
+/src/assets/resized
