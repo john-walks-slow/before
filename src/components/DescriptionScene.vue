@@ -13,16 +13,19 @@
       </p>
     </div>
     <div id="BG" class="max flex">
-      <img id="Avatar" :src="require('/src/assets/Avatar_Back.png')" />
-      <img id="AvatarLine" :src="require('/src/assets/Avatar_Line.png')" />
+      <img id="Avatar" :src="require('@/assets/compressed/Avatar_Back.webp')" />
+      <img
+        id="AvatarLine"
+        :src="require('@/assets/compressed/Avatar_Line.webp')"
+      />
       <div id="Title" class="v-flex a-center">
         <img
-          :src="require('/src/assets/title.png')"
+          :src="require('@/assets/compressed/title.webp')"
           :class="{ fade: isDescriptionShow == true }"
         />
         <img
           id="Logline"
-          :src="require('/src/assets/logline.png')"
+          :src="require('@/assets/compressed/logline.webp')"
           :class="{ fade: isDescriptionShow == true }"
         />
       </div>
@@ -31,7 +34,9 @@
     <button
       id="ContinueButton"
       class="flex a-center button"
-      :class="{ moved: isDescriptionShow == true }"
+      :class="{
+        moved: isDescriptionShow == true,
+      }"
       @click="continueButton"
     >
       {{ continueText }}
@@ -51,6 +56,7 @@ export default {
       continueText: "▶",
     };
   },
+
   methods: {
     continueButton: function () {
       if (!this.isDescriptionShow) {

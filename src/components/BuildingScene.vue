@@ -12,22 +12,39 @@
     <p class="message-text" id="Message9">向下滑動進入下一幕</p>
     <img
       id="Avatar"
-      src="/avg/image/Avatar_Fall_Animation.gif"
-      :style="{ filter: `saturate(${scrollProgress * 0.7})` }"
+      :src="require('/src/assets/compressed/Avatar_Fall_Animation.webp')"
+      :style="{
+        filter: `saturate(${scrollProgress * 0.7})`,
+      }"
     />
     <div id="clouds">
-      <img class="cloud" id="Cloud1" :src="require('/src/assets/cloud.png')" />
-      <img class="cloud" id="Cloud2" :src="require('/src/assets/cloud.png')" />
-      <img class="cloud" id="Cloud3" :src="require('/src/assets/cloud.png')" />
+      <img
+        class="cloud"
+        id="Cloud1"
+        :src="require('/src/assets/compressed/cloud.webp')"
+      />
+      <img
+        class="cloud"
+        id="Cloud2"
+        :src="require('/src/assets/compressed/cloud.webp')"
+      />
+      <img
+        class="cloud"
+        id="Cloud3"
+        :src="require('/src/assets/compressed/cloud.webp')"
+      />
     </div>
     <div>
-      <img id="Building" :src="require('/src/assets/building.png')" />
+      <img
+        id="Building"
+        :src="require('/src/assets/compressed/building.webp')"
+      />
       <div id="BuildingContainer">
         <img
           v-for="index in 9"
           :key="index"
           class="window"
-          :src="require('/src/assets/window' + index.toString() + '.png')"
+          :src="require(`@/assets/compressed/window${index}.webp`)"
         />
       </div>
       <div id="BuildingGrid">
@@ -61,16 +78,16 @@
       >
       <img
         id="ContentBGContain"
-        v-show="window"
+        v-if="window"
         :class="{ 'view-picture': picture, 'no-transition': noTransition }"
-        :src="images[`firsthand${window}.png`]"
+        :src="require(`@/assets/compressed/firsthand${window}.webp`)"
         alt=""
       />
       <img
         id="ContentBG"
-        v-show="window"
+        v-if="window"
         :class="{ 'view-picture': title, 'no-transition': noTransition }"
-        :src="images[`firsthand${window}.png`]"
+        :src="require(`@/assets/compressed/firsthand${window}.webp`)"
         alt=""
       />
       <div
@@ -104,13 +121,6 @@
 import router from "../router/index.js";
 
 import firsthand from "../data/firsthand.json";
-function importAll(r) {
-  let images = {};
-  r.keys().map((item) => {
-    images[item.replace("./", "")] = r(item);
-  });
-  return images;
-}
 
 let intervalId, timerId;
 export default {
@@ -124,9 +134,6 @@ export default {
       picture: false,
       title: false,
       noTransition: false,
-      images: importAll(
-        require.context("../assets/", false, /\.(png|jpe?g|svg)$/)
-      ),
     };
   },
   components: {},
@@ -381,7 +388,7 @@ h1 {
   // font-family: cursive;
   padding: 10vh 15vw;
   background-size: 100% 100% !important;
-  // background: url("../assets/paper.png");
+  // background: url("../assets/compressed/paper.webp");
   color: black;
   background-color: white;
   overflow: auto;
@@ -398,7 +405,7 @@ h1 {
   padding: 0px 5vw;
   width: 100%;
   background-size: 100% 100% !important;
-  // background: url("../assets/paper.png");
+  // background: url("../assets/compressed/paper.webp");
   color: white;
   background-color: black;
   overflow: auto;

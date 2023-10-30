@@ -9,7 +9,7 @@
       }"
     >
       <img
-        :src="require('@/assets/healthcare.png')"
+        :src="require('@/assets/compressed/healthcare.webp')"
         id="Help"
         hover="true"
         @click="help = !help"
@@ -47,6 +47,21 @@
         </div>
       </div>
     </transition>
+    <div
+      v-if="loadTotal && loadCurrent !== loadTotal"
+      class=""
+      :style="{
+        position: 'fixed',
+        zIndex: '9999',
+        left: '0px',
+        bottom: '0px',
+        padding: '10px',
+        background: 'black',
+        color: 'white',
+      }"
+    >
+      資源後臺加載中: {{ this.loadCurrent }} / {{ this.loadTotal }}
+    </div>
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <LoadingScene v-if="loading" />
@@ -60,7 +75,7 @@
 
 <script>
 import LoadingScene from "./components/LoadingScene.vue";
-import { Workbox } from "workbox-window";
+// import { Workbox } from "workbox-window";
 
 // const SCENE_LIST = ["Description", "Building", "Star"];
 export default {
@@ -72,15 +87,35 @@ export default {
     return {
       help: false,
       loading: true,
+      loadCurrent: 0,
+      loadTotal: undefined,
     };
+  },
+  methods: {
+    preload: function (r) {
+      this.loadTotal = r.keys().length;
+      r.keys().forEach(async (k) => {
+        await fetch(r(k));
+        this.loadCurrent++;
+      });
+    },
   },
   mounted: function () {
     window.addEventListener("load", () => {
       this.loading = false;
-      if ("serviceWorker" in navigator) {
-        const wb = new Workbox("/sw.js");
-        wb.register();
-      }
+      // if ("serviceWorker" in navigator) {
+      //   navigator.serviceWorker.register("/sw.js");
+      //   window.addEventListener("beforeinstallprompt", (e) => {
+      //     // 防止 Chrome 67 及更早版本自动显示安装提示
+      //     // e.preventDefault();
+      //     // 稍后再触发此事件
+      //     window.deferredPrompt = e;
+      //     // 更新 UI 以提醒用户可以将 App 安装到桌面
+      //   });
+      // }
+      this.preload(
+        require.context("@/assets/compressed", true, /\.(webp|mp3|png)$/)
+      );
     });
   },
 };
@@ -129,7 +164,7 @@ export default {
 }
 // @font-face {
 // font-family: handwriting;
-// src: url("/src/assets/余温浅浅.ttf");
+// src: url("@/assets/余温浅浅.ttf");
 // }
 .no-transition {
   transition: none !important;

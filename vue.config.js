@@ -47,6 +47,33 @@ module.exports = defineConfig({
       maskIcon: null,
       msTileImage: "img/icons/ms-icon-144x144.png",
     },
+    manifestOptions: {
+      orientation: "landscape",
+      icons: [
+        {
+          src: "./img/icons/android-icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "./img/icons/android-icon-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "./img/icons/android-icon-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+          purpose: "maskable",
+        },
+        {
+          src: "./img/icons/android-icon-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable",
+        },
+      ],
+    },
     workboxOptions: {
       // additionalManifestEntries: additionalResources,
       // HACK devserver 在开发环境会自己返回一个空的 service-worker。绕开这个限制。
@@ -54,7 +81,7 @@ module.exports = defineConfig({
       clientsClaim: true,
       skipWaiting: true,
       maximumFileSizeToCacheInBytes: 50000000,
-      // include: [/\.(ttf|png|json|ico|js)$/],
+      // include: [/\.(ttf|webp|ogg|json|ico|js)$/],
       runtimeCaching: [
         {
           urlPattern: /\/$/,

@@ -2,7 +2,10 @@
   <div
     id="BG"
     class="v-flex"
-    style="background: url(/avg/image/summer1.jpg); background-size: cover"
+    :style="{
+      background: `url(${require('@/assets/compressed/summer1.webp')}`,
+      backgroundSize: 'cover',
+    }"
   >
     <div id="Container">
       <!-- <h1>The End</h1> -->

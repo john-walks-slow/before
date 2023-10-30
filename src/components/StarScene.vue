@@ -40,7 +40,10 @@
               @click="closeModal()"
             ></button>
             <div class="card-content">
-              <img id="BookImage" :src="images[`secondhand${modal}.png`]" />
+              <img
+                id="BookImage"
+                :src="require(`@/assets/compressed/secondhand${modal}.webp`)"
+              />
 
               <p class="title is-4">
                 {{ secondhand[modal - 1].title.split(" / ")[0] }}
@@ -369,12 +372,13 @@ https://mkrtchyan.ga
   }
 
   .stars {
-    background: #000 url(@/assets/galaxy.png) repeat top center;
+    background: #000 url(@/assets/compressed/stars.webp) repeat top center;
     z-index: 0;
   }
 
   .twinkling {
-    background: transparent url(@/assets/twinkling.png) repeat top center;
+    background: transparent url(@/assets/compressed/twinkling.webp) repeat top
+      center;
     z-index: 1;
 
     -moz-animation: move-twink-back 200s linear infinite;
