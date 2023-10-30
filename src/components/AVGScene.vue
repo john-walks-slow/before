@@ -9,7 +9,7 @@
 
 <script>
 import router from "../router/index.js";
-import beforeData from "../data/before.json";
+import beforeData from "../data/before.js";
 // const STORY_LIST = ["intro", "interlude", "outro"];
 /*global go_to*/
 /*global tuesday */
@@ -217,12 +217,13 @@ https://mkrtchyan.ga
   }
 
   .stars {
-    background: #000 url(@/assets/galaxy.png) repeat top center;
+    background: #000 url(@/assets/compressed/stars.webp) repeat top center;
     z-index: 0;
   }
 
   .twinkling {
-    background: transparent url(@/assets/twinkling.png) repeat top center;
+    background: transparent url(@/assets/compressed/twinkling.webp) repeat top
+      center;
     z-index: 1;
 
     -moz-animation: move-twink-back 200s linear infinite;
@@ -293,3 +294,4 @@ https://mkrtchyan.ga
   color: #000;
 }
 </style>
+../data/before.js/index.js
