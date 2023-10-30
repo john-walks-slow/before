@@ -4,6 +4,7 @@
 
 - `yarn dev` 打开devserver
 - `yarn build` 构建生产版本
+- `yarn start` 启动 Express 服务器
 
 ## 加载策略
 
