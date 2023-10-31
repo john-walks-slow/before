@@ -94,25 +94,28 @@ export default {
   methods: {
     preload: function (r) {
       this.loadTotal = r.keys().length;
-      r.keys().forEach(async (k) => {
-        await fetch(r(k));
-        this.loadCurrent++;
-      });
+      // r.keys().forEach(async (k) => {
+      //   await fetch(r(k));
+      //   this.loadCurrent++;
+      // });
+      setInterval(() => {
+        if (this.loadCurrent<this.loadTotal){this.loadCurrent++}
+      }, 14);
     },
   },
   mounted: function () {
     window.addEventListener("load", () => {
       this.loading = false;
-      // if ("serviceWorker" in navigator) {
-      //   navigator.serviceWorker.register("/sw.js");
-      //   window.addEventListener("beforeinstallprompt", (e) => {
-      //     // 防止 Chrome 67 及更早版本自动显示安装提示
-      //     // e.preventDefault();
-      //     // 稍后再触发此事件
-      //     window.deferredPrompt = e;
-      //     // 更新 UI 以提醒用户可以将 App 安装到桌面
-      //   });
-      // }
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js");
+        window.addEventListener("beforeinstallprompt", (e) => {
+          // 防止 Chrome 67 及更早版本自动显示安装提示
+          // e.preventDefault();
+          // 稍后再触发此事件
+          window.deferredPrompt = e;
+          // 更新 UI 以提醒用户可以将 App 安装到桌面
+        });
+      }
       this.preload(
         require.context("@/assets/compressed", true, /\.(webp|mp3|png)$/)
       );
