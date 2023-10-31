@@ -99,7 +99,9 @@ export default {
       //   this.loadCurrent++;
       // });
       setInterval(() => {
-        if (this.loadCurrent<this.loadTotal){this.loadCurrent++}
+        if (this.loadCurrent < this.loadTotal) {
+          this.loadCurrent++;
+        }
       }, 14);
     },
   },
