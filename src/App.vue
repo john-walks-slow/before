@@ -102,7 +102,7 @@ export default {
         if (this.loadCurrent < this.loadTotal) {
           this.loadCurrent++;
         }
-      }, 14);
+      }, 80);
     },
   },
   mounted: function () {
