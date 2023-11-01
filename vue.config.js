@@ -81,7 +81,7 @@ module.exports = defineConfig({
       clientsClaim: true,
       skipWaiting: true,
       maximumFileSizeToCacheInBytes: 50000000,
-      include: [/\.(ttf|webp|png|mp3|json|ico|js)$/],
+      include: [/\.(ttf|webp|png|mp3|json|ico|png|js|css|html)$/],
       runtimeCaching: [
         {
           urlPattern: /\/[^.]*$/,
