@@ -27,7 +27,7 @@ export default {
       color: "",
     },
     launch_story: "hidden",
-    key: { next: "Space", back: "Backspace" },
+    // key: { next: "Space", back: "Backspace" },
     languares: ["zh-Hant"],
     buttons: [
       {
