@@ -6,9 +6,9 @@ const path = require("path");
 // create server instance
 const app = express();
 // bind the request to an absolute path or relative to the CWD
-app.use("/", express.static(path.resolve("docs")));
+app.use("/", express.static(path.resolve("dist")));
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve("docs/index.html"));
+  res.sendFile(path.resolve("dist/index.html"));
 });
 
 // start the server
