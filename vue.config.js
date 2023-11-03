@@ -2,6 +2,7 @@ const { defineConfig } = require("@vue/cli-service");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
+const process = require("process");
 
 let additionalResources = [];
 const PUBLIC_RES_PATH = path.resolve("public");
@@ -30,8 +31,8 @@ for (const filePath of walkSync(PUBLIC_RES_PATH)) {
 }
 module.exports = defineConfig({
   transpileDependencies: true,
-  outputDir: "docs",
-  publicPath: "/",
+  outputDir: process.env?.preset === "page" ? "docs" : "dist",
+  publicPath: process.env?.preset === "page" ? "/before" : "/",
   devServer: { historyApiFallback: true },
   pwa: {
     name: "落地之前",
