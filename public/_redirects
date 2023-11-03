@@ -1,1 +1,7 @@
-/*   /index.html  200
+/story   /index.html  200
+/story/*   /index.html  200
+/building   /index.html  200
+/building/*   /index.html  200
+/star   /index.html  200
+/star/*   /index.html  200
+/end   /index.html  200

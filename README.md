@@ -39,5 +39,3 @@ node-ipc旧版本不支持node18，在node18下无法upgrade
 用vscode的node dependencies可以很方便地升级依赖版本。升级后node-ipc不再冲突。
 
 node-sass编译又出错，删除重装后解决。
-
-HACK 所有的url用//，_redirect匹配/*，只有url访问被redirect
