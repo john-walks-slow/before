@@ -109,7 +109,7 @@ export default {
     window.addEventListener("load", () => {
       this.loading = false;
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js");
+        navigator.serviceWorker.register(`${process.env.BASE_URL}sw.js`);
         window.addEventListener("beforeinstallprompt", (e) => {
           // 防止 Chrome 67 及更早版本自动显示安装提示
           // e.preventDefault();
