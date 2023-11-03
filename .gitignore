@@ -20,6 +20,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-/docs
 /src/assets/raw
 /src/assets/resized
+/dist
