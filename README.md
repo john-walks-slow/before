@@ -29,8 +29,15 @@
 ## 坑
 
 node-ipc旧版本不支持node18，在node18下无法upgrade
+
 在node17下upgrade --latest又无法升级到兼容node18的新版本
+
 方法一（错误方法）：在node17安装一个devdependency node-ipc@9.2.8，没有用，版本不对的是vue/cli的依赖，而不是我的主项目的依赖
+
 方法二：npm ls @achrinza/node-ipc 看到，版本冲突的是vue/cli-plugin-babel
+
 用vscode的node dependencies可以很方便地升级依赖版本。升级后node-ipc不再冲突。
+
 node-sass编译又出错，删除重装后解决。
+
+HACK 所有的url用//，_redirect匹配/*，只有url访问被redirect
